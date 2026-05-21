@@ -62,7 +62,7 @@ pages:
                 links:
                   - title: Pi-hole
                     url: http://${HOST_IP}/admin
-                    icon: sh:pihole
+                    icon: sh:pi-hole
                   - title: Portainer
                     url: https://portainer.flynnstevens.dev
                     icon: sh:portainer
@@ -70,21 +70,21 @@ pages:
                     url: http://${NAS_IP}:5000
                     icon: sh:synology
                   - title: Cloudflare
-                    url: https://one.dash.cloudflare.com
+                    url: https://dash.cloudflare.com
                     icon: sh:cloudflare
                   - title: Speedtest Tracker
                     url: http://${HOST_IP}:8765
-                    icon: sh:speedtest
+                    icon: sh:speedtest-tracker
  
               - title: Home
                 color: 145 70 55
                 links:
                   - title: Home Assistant
                     url: https://home.flynnstevens.dev
-                    icon: sh:homeassistant
+                    icon: si:homeassistant
                   - title: Scrypted
                     url: http://${HOST_IP}:10443
-                    icon: di:scrypted
+                    icon: sh:scrypted
  
       - size: full
         widgets:
@@ -111,10 +111,10 @@ pages:
                 icon: sh:qbittorrent
               - title: Pi-hole
                 url: http://${HOST_IP}/admin
-                icon: sh:pihole
+                icon: sh:pi-hole
               - title: Flaresolverr
                 url: http://${HOST_IP}:8191
-                icon: di:flaresolverr
+                icon: sh:flaresolverr
               - title: Portainer
                 url: https://portainer.flynnstevens.dev
                 icon: sh:portainer
@@ -123,7 +123,7 @@ pages:
                 icon: sh:homeassistant
               - title: Scrypted
                 url: http://${HOST_IP}:10443
-                icon: di:scrypted
+                icon: sh:scrypted
               - title: Synology DSM
                 url: http://${NAS_IP}:5000
                 icon: sh:synology
@@ -132,7 +132,7 @@ pages:
                 icon: sh:speedtest
  
   # ===========================================================================
-  # PAGE 2 — MEDIA
+  # PAGE 2 — MEA
   # ===========================================================================
   - name: Media
     columns:
@@ -218,7 +218,7 @@ pages:
                     icon: sh:cloudflare
                   - title: Flaresolverr
                     url: http://${HOST_IP}:8191
-                    icon: di:flaresolverr
+                    icon: sh:flaresolverr
                   - title: Speedtest Tracker
                     url: http://${HOST_IP}:8765
                     icon: sh:speedtest
@@ -281,7 +281,7 @@ pages:
                 icon: sh:synology
               - title: Flaresolverr
                 url: http://${HOST_IP}:8191
-                icon: di:flaresolverr
+                icon: si:flaresolverr
               - title: Speedtest Tracker
                 url: http://${HOST_IP}:8765
                 icon: sh:speedtest-tracker
