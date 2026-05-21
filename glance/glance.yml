@@ -272,7 +272,7 @@ pages:
             sites:
               - title: Pi-hole
                 url: http://${HOST_IP}/admin
-                icon: sh:pihole
+                icon: sh:pi-hole
               - title: Portainer
                 url: https://portainer.flynnstevens.dev
                 icon: sh:portainer
@@ -284,7 +284,7 @@ pages:
                 icon: di:flaresolverr
               - title: Speedtest Tracker
                 url: http://${HOST_IP}:8765
-                icon: sh:speedtest
+                icon: sh:speedtest-tracker
  
   # ===========================================================================
   # PAGE 4 — HOME AUTOMATION
@@ -301,10 +301,10 @@ pages:
                 links:
                   - title: Home Assistant
                     url: https://home.flynnstevens.dev
-                    icon: sh:homeassistant
+                    icon: si:homeassistant
                   - title: Scrypted
                     url: http://${HOST_IP}:10443
-                    icon: di:scrypted
+                    icon: sh:scrypted
  
           - type: clock
             title: Local Time
@@ -330,7 +330,7 @@ pages:
             sites:
               - title: Home Assistant
                 url: https://home.flynnstevens.dev
-                icon: sh:homeassistant
+                icon: si:homeassistant
               - title: Scrypted
                 url: http://${HOST_IP}:10443
-                icon: di:scrypted
+                icon: sh:scrypted
