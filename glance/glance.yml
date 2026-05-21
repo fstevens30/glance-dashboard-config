@@ -2,8 +2,9 @@ server:
   port: 8080
  
 theme:
-  background-color: 240 10 8
-  primary-color: 217 92 83
+  background-color: 240 13 14
+  primary-color: 51 33 68
+  negative-color: 358 100 68
   contrast-multiplier: 1.2
  
 pages:
@@ -35,52 +36,52 @@ pages:
                 links:
                   - title: Jellyfin
                     url: https://jellyfin.flynnstevens.dev
-                    icon: si:jellyfin
+                    icon: sh:jellyfin
                   - title: Jellyseerr
                     url: https://jellyseerr.flynnstevens.dev
-                    icon: si:jellyseerr
+                    icon: sh:jellyseerr
  
               - title: Downloads
                 color: 200 70 55
                 links:
                   - title: Radarr
                     url: https://radarr.flynnstevens.dev
-                    icon: si:radarr
+                    icon: sh:radarr
                   - title: Sonarr
                     url: https://sonarr.flynnstevens.dev
-                    icon: si:sonarr
+                    icon: sh:sonarr
                   - title: Prowlarr
                     url: https://prowlarr.flynnstevens.dev
-                    icon: si:prowlarr
+                    icon: sh:prowlarr
                   - title: qBittorrent
                     url: https://torrent.flynnstevens.dev
-                    icon: si:qbittorrent
+                    icon: sh:qbittorrent
  
               - title: Network & System
                 color: 190 75 55
                 links:
                   - title: Pi-hole
                     url: http://${HOST_IP}/admin
-                    icon: si:pihole
+                    icon: sh:pihole
                   - title: Portainer
                     url: https://portainer.flynnstevens.dev
-                    icon: si:portainer
+                    icon: sh:portainer
                   - title: Synology DSM
                     url: http://${NAS_IP}:5000
-                    icon: si:synology
+                    icon: sh:synology
                   - title: Cloudflare
                     url: https://one.dash.cloudflare.com
-                    icon: si:cloudflare
+                    icon: sh:cloudflare
                   - title: Speedtest Tracker
                     url: http://${HOST_IP}:8765
-                    icon: si:speedtest
+                    icon: sh:speedtest
  
               - title: Home
                 color: 145 70 55
                 links:
                   - title: Home Assistant
                     url: https://home.flynnstevens.dev
-                    icon: si:homeassistant
+                    icon: sh:homeassistant
                   - title: Scrypted
                     url: http://${HOST_IP}:10443
                     icon: di:scrypted
@@ -92,43 +93,43 @@ pages:
             sites:
               - title: Jellyfin
                 url: https://jellyfin.flynnstevens.dev
-                icon: si:jellyfin
+                icon: sh:jellyfin
               - title: Jellyseerr
                 url: https://jellyseerr.flynnstevens.dev
-                icon: si:jellyseerr
+                icon: sh:jellyseerr
               - title: Radarr
                 url: https://radarr.flynnstevens.dev
-                icon: si:radarr
+                icon: sh:radarr
               - title: Sonarr
                 url: https://sonarr.flynnstevens.dev
-                icon: si:sonarr
+                icon: sh:sonarr
               - title: Prowlarr
                 url: https://prowlarr.flynnstevens.dev
-                icon: si:prowlarr
+                icon: sh:prowlarr
               - title: qBittorrent
                 url: https://torrent.flynnstevens.dev
-                icon: si:qbittorrent
+                icon: sh:qbittorrent
               - title: Pi-hole
                 url: http://${HOST_IP}/admin
-                icon: si:pihole
+                icon: sh:pihole
               - title: Flaresolverr
                 url: http://${HOST_IP}:8191
                 icon: di:flaresolverr
               - title: Portainer
                 url: https://portainer.flynnstevens.dev
-                icon: si:portainer
+                icon: sh:portainer
               - title: Home Assistant
                 url: https://home.flynnstevens.dev
-                icon: si:homeassistant
+                icon: sh:homeassistant
               - title: Scrypted
                 url: http://${HOST_IP}:10443
                 icon: di:scrypted
               - title: Synology DSM
                 url: http://${NAS_IP}:5000
-                icon: si:synology
+                icon: sh:synology
               - title: Speedtest Tracker
                 url: http://${HOST_IP}:8765
-                icon: si:speedtest
+                icon: sh:speedtest
  
   # ===========================================================================
   # PAGE 2 — MEDIA
@@ -145,26 +146,26 @@ pages:
                 links:
                   - title: Jellyfin
                     url: https://jellyfin.flynnstevens.dev
-                    icon: si:jellyfin
+                    icon: sh:jellyfin
                   - title: Jellyseerr
                     url: https://jellyseerr.flynnstevens.dev
-                    icon: si:jellyseerr
+                    icon: sh:jellyseerr
  
               - title: Acquire
                 color: 200 70 55
                 links:
                   - title: Radarr
                     url: https://radarr.flynnstevens.dev
-                    icon: si:radarr
+                    icon: sh:radarr
                   - title: Sonarr
                     url: https://sonarr.flynnstevens.dev
-                    icon: si:sonarr
+                    icon: sh:sonarr
                   - title: Prowlarr
                     url: https://prowlarr.flynnstevens.dev
-                    icon: si:prowlarr
+                    icon: sh:prowlarr
                   - title: qBittorrent
                     url: https://torrent.flynnstevens.dev
-                    icon: si:qbittorrent
+                    icon: sh:qbittorrent
  
           - type: videos
             title: YouTube
@@ -211,30 +212,30 @@ pages:
                 links:
                   - title: Pi-hole
                     url: http://${HOST_IP}/admin
-                    icon: si:pihole
+                    icon: sh:pihole
                   - title: Cloudflare Zero Trust
                     url: https://one.dash.cloudflare.com
-                    icon: si:cloudflare
+                    icon: sh:cloudflare
                   - title: Flaresolverr
                     url: http://${HOST_IP}:8191
                     icon: di:flaresolverr
                   - title: Speedtest Tracker
                     url: http://${HOST_IP}:8765
-                    icon: si:speedtest
+                    icon: sh:speedtest
  
               - title: Containers
                 color: 270 60 60
                 links:
                   - title: Portainer
                     url: https://portainer.flynnstevens.dev
-                    icon: si:portainer
+                    icon: sh:portainer
  
               - title: NAS
                 color: 145 70 55
                 links:
                   - title: Synology DSM
                     url: http://${NAS_IP}:5000
-                    icon: si:synology
+                    icon: sh:synology
  
           - type: dns-stats
             title: Pi-hole
@@ -271,19 +272,19 @@ pages:
             sites:
               - title: Pi-hole
                 url: http://${HOST_IP}/admin
-                icon: si:pihole
+                icon: sh:pihole
               - title: Portainer
                 url: https://portainer.flynnstevens.dev
-                icon: si:portainer
+                icon: sh:portainer
               - title: Synology DSM
                 url: http://${NAS_IP}:5000
-                icon: si:synology
+                icon: sh:synology
               - title: Flaresolverr
                 url: http://${HOST_IP}:8191
                 icon: di:flaresolverr
               - title: Speedtest Tracker
                 url: http://${HOST_IP}:8765
-                icon: si:speedtest
+                icon: sh:speedtest
  
   # ===========================================================================
   # PAGE 4 — HOME AUTOMATION
@@ -300,7 +301,7 @@ pages:
                 links:
                   - title: Home Assistant
                     url: https://home.flynnstevens.dev
-                    icon: si:homeassistant
+                    icon: sh:homeassistant
                   - title: Scrypted
                     url: http://${HOST_IP}:10443
                     icon: di:scrypted
@@ -329,7 +330,7 @@ pages:
             sites:
               - title: Home Assistant
                 url: https://home.flynnstevens.dev
-                icon: si:homeassistant
+                icon: sh:homeassistant
               - title: Scrypted
                 url: http://${HOST_IP}:10443
                 icon: di:scrypted
