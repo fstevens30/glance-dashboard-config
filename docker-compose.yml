@@ -8,7 +8,7 @@ services:
     environment:
       - WEATHER_LOCATION=${WEATHER_LOCATION}
       - WEATHER_UNITS=${WEATHER_UNITS}
-      - NUC_IP=${NUC_IP}
+      - HOST_IP=${HOST_IP}
       - NAS_IP=${NAS_IP}
       - PIHOLE_API_TOKEN=${PIHOLE_API_TOKEN}
       - RADARR_API_KEY=${RADARR_API_KEY}
