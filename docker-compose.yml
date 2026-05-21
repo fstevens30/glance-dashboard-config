@@ -6,6 +6,6 @@ services:
     ports:
       - "8090:8080"
     volumes:
-      - ./glance/glance.yml:/app/config/glance.yml
+      - /opt/docker/glance-dashboard-config/glance/glance.yml:/app/config/glance.yml
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /etc/localtime:/etc/localtime:ro
