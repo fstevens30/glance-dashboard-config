@@ -1,5 +1,5 @@
 server:
-  port: 8090 # Changed from 8080 to avoid clash with qBittorrent
+  port: 8080
 
 theme:
   background-color: 240 10 8
