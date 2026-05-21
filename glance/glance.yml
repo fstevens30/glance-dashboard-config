@@ -335,7 +335,7 @@ pages:
         widgets:
           - type: iframe
             title: Home Assistant
-            url: http://${HOST_IP}:8123
+            source: http://${HOST_IP}:8123
             height: 650
 
       - size: small
