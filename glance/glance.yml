@@ -179,7 +179,7 @@ pages:
 
       - size: full
         widgets:
-          - type: torrents
+          - type: torrent-client
             title: Active Downloads
             url: http://${HOST_IP}:8080
             username: ${QBIT_USER}
