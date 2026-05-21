@@ -179,12 +179,6 @@ pages:
 
       - size: full
         widgets:
-          - type: torrent-client
-            title: Active Downloads
-            url: http://${HOST_IP}:8080
-            username: ${QBIT_USER}
-            password: ${QBIT_PASS}
-
           - type: releases
             title: Upcoming — Movies & TV
             show-days: 14
