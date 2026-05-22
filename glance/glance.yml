@@ -401,7 +401,6 @@ pages:
                 type: sonarr
 
           - type: videos
-            title: YouTube
             channels:
               - UCmlzNHg8QiWVutUyFOV2UdQ
               - UCR-DXc1voovS8nhAvccRZhg
