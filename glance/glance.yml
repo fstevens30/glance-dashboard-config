@@ -192,14 +192,14 @@ pages:
           - type: custom-api
             cache: 1h
             title: Internet Speed
-            title-url: ${SERVER_URL}:8765
-            url: ${SERVER_URL}:8765/api/v1/results/latest
+            title-url: ${HOST_IP}:8765
+            url: ${HOST_IP}:8765/api/v1/results/latest
             headers:
               Authorization: Bearer ${SPEEDTEST_TRACKER_API_TOKEN}
               Accept: application/json
             subrequests:
               stats:
-                url: ${SERVER_URL}:8765/api/v1/stats
+                url: ${HOST_IP}:8765/api/v1/stats
                 headers:
                   Authorization: Bearer ${SPEEDTEST_TRACKER_API_TOKEN}
                   Accept: application/json
