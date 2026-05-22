@@ -6,6 +6,7 @@ services:
     ports:
       - "8090:8080"
     environment:
+      - TZ=Pacific/Auckland
       - HOST_IP=${HOST_IP}
       - NAS_IP=${NAS_IP}
       - WEATHER_LOCATION=${WEATHER_LOCATION}
