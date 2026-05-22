@@ -470,12 +470,25 @@ pages:
               - type: local
                 name: Server
 
-          - type: server-stats
+          - type: custom-api
             title: Synology NAS — System Stats
-            servers:
-              - type: remote
-                name: NAS
-                url: http://${NAS_IP}:27973
+            cache: 30s
+            url: http://${NAS_IP}:61208/api/4/all
+            template: |
+              <div class="flex justify-between text-center margin-block-3">
+                <div>
+                  <div class="color-highlight size-h3">{{ .JSON.Float "cpu.total" | printf "%.1f" }}%</div>
+                  <div class="size-h6">CPU</div>
+                </div>
+                <div>
+                  <div class="color-highlight size-h3">{{ .JSON.Float "mem.percent" | printf "%.1f" }}%</div>
+                  <div class="size-h6">RAM</div>
+                </div>
+                <div>
+                  <div class="color-highlight size-h3">{{ .JSON.Float "fs.0.percent" | printf "%.1f" }}%</div>
+                  <div class="size-h6">DISK</div>
+                </div>
+              </div>
 
           - type: docker-containers
             title: Server — Docker Containers
