@@ -491,13 +491,13 @@ pages:
               mode: "default"    # "default" or "upload"
             subrequests:
               transfer:
-                url: http://${SERVER_IP}/api/v2/transfer/info
+                url: http://${HOST_IP}/api/v2/transfer/info
               seeding:
-                url: http://${SERVER_IP}/api/v2/torrents/info
+                url: http://${HOST_IP}/api/v2/torrents/info
                 parameters:
                   filter: seeding
               leeching:
-                url: http://${SERVER_IP}/api/v2/torrents/info
+                url: http://${HOST_IP}/api/v2/torrents/info
                 parameters:
                   filter: downloading
             template: |
