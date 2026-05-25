@@ -555,7 +555,7 @@ pages:
             title: Pi-hole
             service: pihole-v6
             url: http://localhost
-            token: ${PIHOLE_API_TOKEN}
+            password: ${PIHOLE_API_TOKEN}
 
       - size: full
         widgets:
