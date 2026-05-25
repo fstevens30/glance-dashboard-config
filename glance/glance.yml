@@ -581,13 +581,13 @@ pages:
               mode: "default" # "default" or "upload"
             subrequests:
               transfer:
-                url: http://localhost:8080/api/v2/transfer/info
+                url: http://172.18.0.1:8080/api/v2/transfer/info
               seeding:
-                url: http://localhost:8080/api/v2/torrents/info
+                url: http://172.18.0.1:8080/api/v2/torrents/info
                 parameters:
                   filter: seeding
               leeching:
-                url: http://localhost:8080/api/v2/torrents/info
+                url: http://172.18.0.1:8080/api/v2/torrents/info
                 parameters:
                   filter: downloading
             template: |
