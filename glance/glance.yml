@@ -434,10 +434,10 @@ pages:
             title: Upcoming — Movies & TV
             show-days: 14
             sources:
-              - url: http://localhost:7878
+              - url: http://172.18.0.1:7878
                 token: ${RADARR_API_KEY}
                 type: radarr
-              - url: http://localhost:8989
+              - url: http://172.18.0.1:8989
                 token: ${SONARR_API_KEY}
                 type: sonarr
 
