@@ -229,6 +229,9 @@ pages:
               - title: Speedtest Tracker
                 url: https://speedtest-tracker.flynnstevens.dev
                 icon: sh:speedtest-tracker
+              - title: Portfolio
+                url: https://flynnstevens.dev
+                icon: si:nextdotjs
 
       - size: small
         widgets:
@@ -562,18 +565,12 @@ pages:
       - size: full
         widgets:
           - type: server-stats
-            title: Server — System Stats
-            servers:
-              - type: local
-                name: Server
-
-          - type: server-stats
             title: System Stats
             servers:
               - type: local
                 name: Server
               - type: agent
-                name: Synology NAS
+                name: NAS
                 url: http://${NAS_IP}:27973
 
           - type: docker-containers
@@ -832,7 +829,7 @@ pages:
             sites:
               - title: Home Assistant
                 url: https://home.flynnstevens.dev
-                icon: sh:homeassistant
+                icon: sh:home-assistant
               - title: Scrypted
                 url: http://${HOST_IP}:10443
                 icon: sh:scrypted
