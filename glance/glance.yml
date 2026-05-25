@@ -391,7 +391,7 @@ pages:
                     url: https://scrypted.flynnstevens.dev
                     icon: mdi:cctv
 
-  - $include: pages/homelab.yml
-  - $include: pages/media.yml
-  - $include: pages/news.yml
-  - $include: pages/sports.yml
+  - $include: homelab.yml
+  - $include: media.yml
+  - $include: news.yml
+  - $include: sports.yml
