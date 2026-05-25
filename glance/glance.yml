@@ -2,10 +2,32 @@ server:
   port: 8080
 
 theme:
-  background-color: 240 13 14
-  primary-color: 51 33 68
-  negative-color: 358 100 68
-  contrast-multiplier: 1.2
+  background-color: 100 20 10
+  primary-color: 40 90 40
+  contrast-multiplier: 1.1
+
+  disable-picker: false
+  presets:
+    gruvbox-dark:
+      background-color: 0 0 16
+      primary-color: 43 59 81
+      positive-color: 61 66 44
+      negative-color: 6 96 59
+
+    zebra:
+      light: true
+      background-color: 0 0 95
+      primary-color: 0 0 10
+      negative-color: 0 90 50
+
+branding:
+  custom-footer: |
+    <p>Powered by <a href="https://github.com/glanceapp/glance">Glance</a></p>
+  logo-url: /assets/logo.png
+  favicon-url: /assets/logo.png
+  app-name: "Home"
+  app-icon-url: "/assets/app-icon.png"
+  app-background-color: "#151519"
 
 pages:
   # ===========================================================================
@@ -470,25 +492,14 @@ pages:
               - type: local
                 name: Server
 
-          - type: custom-api
-            title: Synology NAS — System Stats
-            cache: 30s
-            url: http://${NAS_IP}:61208/api/4/all
-            template: |
-              <div class="flex justify-between text-center margin-block-3">
-                <div>
-                  <div class="color-highlight size-h3">{{ .JSON.Float "cpu.total" | printf "%.1f" }}%</div>
-                  <div class="size-h6">CPU</div>
-                </div>
-                <div>
-                  <div class="color-highlight size-h3">{{ .JSON.Float "mem.percent" | printf "%.1f" }}%</div>
-                  <div class="size-h6">RAM</div>
-                </div>
-                <div>
-                  <div class="color-highlight size-h3">{{ .JSON.Float "fs.0.percent" | printf "%.1f" }}%</div>
-                  <div class="size-h6">DISK</div>
-                </div>
-              </div>
+          - type: server-stats
+            title: System Stats
+            servers:
+              - type: local
+                name: Server
+              - type: agent
+                name: Synology NAS
+                url: http://${NAS_IP}:27973
 
           - type: docker-containers
             title: Server — Docker Containers
