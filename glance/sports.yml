@@ -1,7 +1,7 @@
 - name: Sports
   slug: sports
   columns:
-    - size: small
+    - size: full
       widgets:
         - type: custom-api
           title: Football Scores
