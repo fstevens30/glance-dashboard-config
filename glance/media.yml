@@ -1,64 +1,63 @@
-pages:
-  - name: Media
-    slug: media
-    columns:
-      - size: small
-        widgets:
-          - type: bookmarks
-            title: Media Apps
-            groups:
-              - title: Watch
-                color: 217 92 83
-                links:
-                  - title: Jellyfin
-                    url: https://jellyfin.flynnstevens.dev
-                    icon: sh:jellyfin
-                  - title: Jellyseerr
-                    url: https://jellyseerr.flynnstevens.dev
-                    icon: sh:jellyseerr
+- name: Media
+  slug: media
+  columns:
+    - size: small
+      widgets:
+        - type: bookmarks
+          title: Media Apps
+          groups:
+            - title: Watch
+              color: 217 92 83
+              links:
+                - title: Jellyfin
+                  url: https://jellyfin.flynnstevens.dev
+                  icon: sh:jellyfin
+                - title: Jellyseerr
+                  url: https://jellyseerr.flynnstevens.dev
+                  icon: sh:jellyseerr
 
-              - title: Acquire
-                color: 200 70 55
-                links:
-                  - title: Radarr
-                    url: https://radarr.flynnstevens.dev
-                    icon: sh:radarr
-                  - title: Sonarr
-                    url: https://sonarr.flynnstevens.dev
-                    icon: sh:sonarr
-                  - title: Prowlarr
-                    url: https://prowlarr.flynnstevens.dev
-                    icon: sh:prowlarr
-                  - title: qBittorrent
-                    url: https://torrent.flynnstevens.dev
-                    icon: sh:qbittorrent
+            - title: Acquire
+              color: 200 70 55
+              links:
+                - title: Radarr
+                  url: https://radarr.flynnstevens.dev
+                  icon: sh:radarr
+                - title: Sonarr
+                  url: https://sonarr.flynnstevens.dev
+                  icon: sh:sonarr
+                - title: Prowlarr
+                  url: https://prowlarr.flynnstevens.dev
+                  icon: sh:prowlarr
+                - title: qBittorrent
+                  url: https://torrent.flynnstevens.dev
+                  icon: sh:qbittorrent
 
-      - size: full
-        widgets:
-          - type: releases
-            title: Upcoming — Movies & TV
-            show-days: 14
-            sources:
-              - url: http://${HOST_IP}:7878
-                token: ${RADARR_API_KEY}
-                type: radarr
-              - url: http://${HOST_IP}:8989
-                token: ${SONARR_API_KEY}
-                type: sonarr
+    - size: full
+      widgets:
+        - type: releases
+          title: Upcoming — Movies & TV
+          show-days: 14
+          sources:
+            - url: http://${HOST_IP}:7878
+              token: ${RADARR_API_KEY}
+              type: radarr
+            - url: http://${HOST_IP}:8989
+              token: ${SONARR_API_KEY}
+              type: sonarr
 
-          - type: videos
-            channels:
-              - UCmlzNHg8QiWVutUyFOV2UdQ # TheStockPot
-              - UCR-DXc1voovS8nhAvccRZhg # Jeff Geerling
-              - UCsBjURrPoezykLs9EqgamOA # Fireship
+        - type: videos
+          channels:
+            - UCmlzNHg8QiWVutUyFOV2UdQ # TheStockPot
+            - UCR-DXc1voovS8nhAvccRZhg # Jeff Geerling
+            - UCsBjURrPoezykLs9EqgamOA # Fireship
 
-      - size: small
-        widgets:
-          - type: rss
-            title: r/selfhosted
-            limit: 6
-            feeds:
-              - url: https://www.reddit.com/r/selfhosted/.rss
-                title: r/selfhosted
-              - url: https://www.reddit.com/r/homelab/.rss
-                title: r/homelab
+    - size: small
+      widgets:
+        - type: rss
+          title: r/selfhosted
+          limit: 6
+          feeds:
+            - url: https://www.reddit.com/r/selfhosted/.rss
+              title: r/selfhosted
+            - url: https://www.reddit.com/r/homelab/.rss
+              title: r/homelab
