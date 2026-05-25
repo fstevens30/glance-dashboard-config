@@ -2,9 +2,8 @@ pages:
   - name: Homelab
     slug: homelab
     columns:
-      columns:
-        - size: small
-          widgets:
+      - size: small
+        widgets:
             - type: bookmarks
               title: Infrastructure
               groups:
