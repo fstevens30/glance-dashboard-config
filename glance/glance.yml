@@ -554,7 +554,7 @@ pages:
           - type: dns-stats
             title: Pi-hole
             service: pihole-v6
-            url: http://172.19.0.1
+            url: http://host.docker.internal
             token: ${PIHOLE_API_TOKEN}
 
       - size: full
