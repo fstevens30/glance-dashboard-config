@@ -19,6 +19,6 @@ services:
       - SPEEDTEST_APP_KEY=${SPEEDTEST_APP_KEY}
       - SPEEDTEST_TRACKER_API_TOKEN=${SPEEDTEST_TRACKER_API_TOKEN}
     volumes:
-      - /opt/docker/glance-dashboard-config/glance/glance.yml:/app/config/glance.yml
+      - /opt/docker/glance-dashboard-config/glance:/app/config
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /etc/localtime:/etc/localtime:ro
