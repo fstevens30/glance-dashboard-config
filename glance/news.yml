@@ -6,7 +6,7 @@
         - type: custom-api
           title: Trending Repositories
           cache: 24h
-          url: "https://api.ossinsight.io/v1/trends/repos/?period=past_24_hours&language=All"
+          url: "https://api.ossinsight.io/v1/trends/repos/?period=past_week&language=All"
           template: |
             <ul class="list list-gap-10 collapsible-container" data-collapse-after="3">
               {{ range .JSON.Array "data.rows"}}
@@ -58,6 +58,34 @@
             </ul>
 
     - size: full
+      widgets:
+        - type: rss
+          title: News
+          style: vertical-list
+          feeds:
+            - url: "https://www.rnz.co.nz/rss/national.xml"
+              title: RNZ National
+            - url: "https://www.rnz.co.nz/rss/politics.xml"
+              title: RNZ Politics
+            - url: "https://www.beehive.govt.nz/releases/feed"
+              title: Beehive
+
+        - type: group
+          define: &shared-properties
+            type: reddit
+            show-thumbnails: true
+            collapse-after: 6
+          widgets:
+            - subreddit: worldnews
+              <<: *shared-properties
+            - subreddit: chch
+              <<: *shared-properties
+            - subreddit: newzealand
+              <<: *shared-properties
+            - subreddit: technology
+              <<: *shared-properties
+
+    - size: small
       widgets:
         - type: markets
           markets:
