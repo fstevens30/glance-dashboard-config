@@ -30,7 +30,7 @@
               links:
                 - title: Home Assistant
                   url: https://homeassistant.flynnstevens.dev
-                  icon: sh:homeassistant
+                  icon: sh:home-assistant
                 - title: Scrypted
                   url: https://scrypted.flynnstevens.dev
                   icon: mdi:cctv

@@ -18,6 +18,7 @@ services:
       - GLANCES_NAS_PASS=${GLANCES_NAS_PASS}
       - SPEEDTEST_APP_KEY=${SPEEDTEST_APP_KEY}
       - SPEEDTEST_TRACKER_API_TOKEN=${SPEEDTEST_TRACKER_API_TOKEN}
+      - NASA_API_KEY=${NASA_API_KEY}
     volumes:
       - /opt/docker/glance-dashboard-config/glance:/app/config
       - /var/run/docker.sock:/var/run/docker.sock:ro
