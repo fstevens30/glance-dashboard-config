@@ -76,13 +76,13 @@ pages:
 
                   {{ $gradient := "" }}
                   {{ if lt $dayProgress 10.0 }}
-                    {{ $gradient = "##FF4BA2" }}
+                    {{ $gradient = "#FF4BA2" }}
                   {{ else if lt $dayProgress 25.0 }}
-                    {{ $gradient = "##FFE100, ##FF4BA2" }}
+                    {{ $gradient = "#FFE100, #FF4BA2" }}
                   {{ else if lt $dayProgress 50.0 }}
-                    {{ $gradient = "##FFE100, ##FF7600, ##FF4400" }}
+                    {{ $gradient = "#FFE100, #FF7600, #FF4400" }}
                   {{ else }}
-                    {{ $gradient = "##FFE100, ##FF7600, ##FF4400, ##FF4BA2" }}
+                    {{ $gradient = "#FFE100, #FF7600, #FF4400, #FF4BA2" }}
                   {{ end }}
 
                   <div style="font-family: sans-serif; text-align: center;">
@@ -119,13 +119,13 @@ pages:
 
                   {{ $gradient := "" }}
                   {{ if lt $monthProgress 10.0 }}
-                    {{ $gradient = "##FF4BA2" }}
+                    {{ $gradient = "#FF4BA2" }}
                   {{ else if lt $monthProgress 25.0 }}
-                    {{ $gradient = "##FFE100, ##FF4BA2" }}
+                    {{ $gradient = "#FFE100, #FF4BA2" }}
                   {{ else if lt $monthProgress 50.0 }}
-                    {{ $gradient = "##FFE100, ##FF7600, ##FF4400" }}
+                    {{ $gradient = "#FFE100, #FF7600, #FF4400" }}
                   {{ else }}
-                    {{ $gradient = "##FFE100, ##FF7600, ##FF4400, ##FF4BA2" }}
+                    {{ $gradient = "#FFE100, #FF7600, #FF4400, #FF4BA2" }}
                   {{ end }}
 
                   <div style="font-family: sans-serif; text-align: center;">
@@ -156,13 +156,13 @@ pages:
 
                   {{ $gradient := "" }}
                   {{ if lt $yearProgress 10.0 }}
-                    {{ $gradient = "##FF4BA2" }}
+                    {{ $gradient = "#FF4BA2" }}
                   {{ else if lt $yearProgress 25.0 }}
-                    {{ $gradient = "##FFE100, ##FF4BA2" }}
+                    {{ $gradient = "#FFE100, #FF4BA2" }}
                   {{ else if lt $yearProgress 50.0 }}
-                    {{ $gradient = "##FFE100, ##FF7600, ##FF4400" }}
+                    {{ $gradient = "#FFE100, #FF7600, #FF4400" }}
                   {{ else }}
-                    {{ $gradient = "##FFE100, ##FF7600, ##FF4400, ##FF4BA2" }}
+                    {{ $gradient = "#FFE100, #FF7600, #FF4400, #FF4BA2" }}
                   {{ end }}
 
                   <div style="font-family: sans-serif; text-align: center;">
