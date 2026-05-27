@@ -42,7 +42,7 @@ branding:
   logo-url: /assets/logo.png
   favicon-url: /assets/logo.png
   app-name: "Home"
-  app-icon-url: "/assets/app-icon.png"
+  app-icon-url: "/assets/logo.png"
   app-background-color: "#151519"
 
 pages:
