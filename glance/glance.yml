@@ -39,10 +39,10 @@ theme:
 branding:
   custom-footer: |
     <p>Powered by <a style="text-decoration: underline" href="https://github.com/glanceapp/glance">Glance</a> - <a style="text-decoration: underline" href="https://github.com/fstevens30/glance-dashboard-config">built</a> with ❤️ by <a style="text-decoration: underline" href="https://flynnstevens.dev">Flynn Stevens</a></p>
-  logo-url: /assets/logo.png
-  favicon-url: /assets/logo.png
+  logo-url: /logo.png
+  favicon-url: /logo.png
   app-name: "Home"
-  app-icon-url: "/assets/logo.png"
+  app-icon-url: "/logo.png"
   app-background-color: "#151519"
 
 pages:
