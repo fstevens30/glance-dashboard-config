@@ -45,7 +45,7 @@
         - type: dns-stats
           title: Pi-hole
           service: pihole-v6
-          url: http://${HOST_IP}
+          url: http://${HOST_IP}/admin
           password: ${PIHOLE_API_TOKEN}
 
     - size: full
@@ -72,13 +72,13 @@
             mode: "default" # "default" or "upload"
           subrequests:
             transfer:
-              url: http://${HOST_IP}:8080/api/v2/transfer/info
+              url: http://172.18.0.1:8080/api/v2/transfer/info
             seeding:
-              url: http://${HOST_IP}:8080/api/v2/torrents/info
+              url: http://172.18.0.1:8080/api/v2/torrents/info
               parameters:
                 filter: seeding
             leeching:
-              url: http://${HOST_IP}:8080/api/v2/torrents/info
+              url: http://172.18.0.1:8080/api/v2/torrents/info
               parameters:
                 filter: downloading
           template: |
