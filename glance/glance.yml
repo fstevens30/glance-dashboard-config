@@ -225,6 +225,9 @@ pages:
               - title: Portfolio
                 url: https://flynnstevens.dev
                 icon: si:nextdotjs
+              - title: Firefly
+                url: https://budget.flynnstevens.dev
+                icon: sh:firefly-iii
                 
           - type: bookmarks
             title: Quick Links
@@ -283,6 +286,9 @@ pages:
                   - title: Scrypted
                     url: https://scrypted.flynnstevens.dev
                     icon: mdi:cctv
+                  - title: Firefly
+                    url: https://budget.flynnstevens.dev
+                    icon: sh:firefly-iii
 
       - size: small
         widgets:
