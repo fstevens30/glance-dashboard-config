@@ -106,13 +106,19 @@ pages:
 
                   {{ $month := $localTime.Month }}
                   {{ $dayOfMonth := $localTime.Day }}
+                  {{ $year := $localTime.Year }}
 
                   {{ $secondsToday := add (mul $localTime.Hour 3600) (mul $localTime.Minute 60) | add $localTime.Second }}
                   {{ $fractionOfDay := div $secondsToday 86400.0 }}
 
                   {{ $daysInMonth := 31 }}
-                  {{ if eq $month 2 }} {{ $daysInMonth = 28 }} {{ end }}
-                  {{ if or (eq $month 4) (eq $month 6) (eq $month 9) (eq $month 11) }} {{ $daysInMonth = 30 }} {{ end }}
+                  {{ if eq $month 2 }}
+                    {{ $isLeapYear := or (eq (mod $year 400) 0) (and (eq (mod $year 4) 0) (ne (mod $year 100) 0)) }}
+                    {{ $daysInMonth = 28 }}
+                    {{ if $isLeapYear }}{{ $daysInMonth = 29 }}{{ end }}
+                  {{ else if or (eq $month 4) (eq $month 6) (eq $month 9) (eq $month 11) }}
+                    {{ $daysInMonth = 30 }}
+                  {{ end }}
 
                   {{ $daysElapsed := add (sub $dayOfMonth 1) $fractionOfDay }}
                   {{ $monthProgress := mul (div $daysElapsed $daysInMonth) 100.0 }}
@@ -151,7 +157,11 @@ pages:
                   {{ $dayOfYear := $localTime.YearDay }}
                   {{ $secondsElapsed := add (mul (sub $dayOfYear 1) 86400) $secondsToday }}
 
-                  {{ $totalSecondsInYear := mul 365 86400 }}
+                  {{ $year := $localTime.Year }}
+                  {{ $isLeapYear := or (eq (mod $year 400) 0) (and (eq (mod $year 4) 0) (ne (mod $year 100) 0)) }}
+                  {{ $totalDaysInYear := 365 }}
+                  {{ if $isLeapYear }}{{ $totalDaysInYear = 366 }}{{ end }}
+                  {{ $totalSecondsInYear := mul $totalDaysInYear 86400 }}
                   {{ $yearProgress := div (mul $secondsElapsed 100.0) $totalSecondsInYear }}
 
                   {{ $gradient := "" }}
@@ -274,7 +284,7 @@ pages:
                     url: https://dash.cloudflare.com
                     icon: sh:cloudflare
                   - title: Speedtest Tracker
-                    url: https://https://speedtest-tracker.flynnstevens.dev
+                    url: https://speedtest-tracker.flynnstevens.dev
                     icon: sh:speedtest-tracker
 
               - title: Home
@@ -282,7 +292,7 @@ pages:
                 links:
                   - title: Home Assistant
                     url: https://home.flynnstevens.dev
-                    icon: si:homeassistant
+                    icon: sh:home-assistant
                   - title: Scrypted
                     url: https://scrypted.flynnstevens.dev
                     icon: mdi:cctv
