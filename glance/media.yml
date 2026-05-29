@@ -34,16 +34,7 @@
 
     - size: full
       widgets:
-        - type: releases
-          title: Upcoming — Movies & TV
-          show-days: 14
-          sources:
-            - url: http://${HOST_IP}:7878
-              token: ${RADARR_API_KEY}
-              type: radarr
-            - url: http://${HOST_IP}:8989
-              token: ${SONARR_API_KEY}
-              type: sonarr
+        - include: releases.yml
 
         - type: videos
           channels:
