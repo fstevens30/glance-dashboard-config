@@ -34,7 +34,7 @@
 
     - size: full
       widgets:
-        - include: releases.yml
+        - $include: releases.yml
 
         - type: videos
           channels:
