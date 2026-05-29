@@ -19,6 +19,8 @@ services:
       - SPEEDTEST_APP_KEY=${SPEEDTEST_APP_KEY}
       - SPEEDTEST_TRACKER_API_TOKEN=${SPEEDTEST_TRACKER_API_TOKEN}
       - NASA_API_KEY=${NASA_API_KEY}
+      - JELLYFIN_URL=${JELLYFIN_URL}
+      - JELLYFIN_KEY=${JELLYFIN_KEY}
     volumes:
       - /opt/docker/glance-dashboard-config/glance:/app/config
       - /var/run/docker.sock:/var/run/docker.sock:ro
