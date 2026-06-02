@@ -233,7 +233,7 @@ pages:
                 url: https://speedtest-tracker.flynnstevens.dev
                 icon: sh:speedtest-tracker
               - title: Portfolio
-                url: https://flynnstevens.dev
+                url: https://flynnstevens.dev/favicon.ico
                 icon: si:nextdotjs
               - title: Firefly
                 url: https://budget.flynnstevens.dev
