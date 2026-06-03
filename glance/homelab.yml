@@ -45,7 +45,7 @@
         - type: dns-stats
           title: Pi-hole
           service: pihole-v6
-          url: http://${HOST_IP}/admin
+          url: http://localhost
           password: ${PIHOLE_API_TOKEN}
 
     - size: full
