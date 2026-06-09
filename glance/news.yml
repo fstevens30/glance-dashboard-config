@@ -56,19 +56,21 @@
                 </li>
               {{ end }}
             </ul>
+        - type: rss
+          title: My Blog
+          style: vertical-list
+          feeds:
+            - url: "https://www.flynnstevens.dev/rss.xml"
 
     - size: full
       widgets:
         - type: rss
           title: News
-          style: vertical-list
+          style: detailed-list
           feeds:
             - url: "https://www.rnz.co.nz/rss/national.xml"
-              title: RNZ National
             - url: "https://www.rnz.co.nz/rss/politics.xml"
-              title: RNZ Politics
             - url: "https://www.beehive.govt.nz/releases/feed"
-              title: Beehive
 
         - type: group
           define: &shared-properties
