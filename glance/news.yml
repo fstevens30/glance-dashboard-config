@@ -60,7 +60,7 @@
           title: My Blog
           style: vertical-list
           feeds:
-            - url: "https://www.flynnstevens.dev/rss.xml"
+            - url: "https://flynnstevens.dev/rss.xml"
 
     - size: full
       widgets:
