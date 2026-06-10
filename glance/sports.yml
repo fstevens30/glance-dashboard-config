@@ -84,6 +84,39 @@
             {{ end }}
             </ul>
             
+        
+    - size: full
+      widgets:
+        - type: group
+          widgets:
+            - type: rss
+              title: Formula 1
+              style: detailed-list
+              feeds:
+                - url: "https://www.racefans.net/feed/"
+                - url: "https://www.formula1.com/content/fom-website/en/latest/all.xml"
+        
+            - type: rss
+              title: Football
+              style: detailed-list
+              feeds:
+                - url: "https://www.football365.com/feed"
+                - url: "https://www.goal.com/feeds/en/news"
+        
+            - type: rss
+              title: A-League
+              style: detailed-list
+              feeds:
+                - url: "https://www.footballaustralia.com.au/news/rss"
+                - url: "https://www.keepup.com.au/news/feed"
+        
+            - type: rss
+              title: NBA
+              style: detailed-list
+              feeds:
+                - url: "https://www.nba.com/rss/nba_rss.xml"
+                - url: "https://bleacherreport.com/articles/feed?tag_id=8"
+
         - type: custom-api
           title: NBA Today
           url: "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard"
@@ -251,22 +284,6 @@
               </li>
             {{ end }}
 
-    - size: full
-      widgets:
-        - type: group
-          define: &shared-properties
-            type: reddit
-            show-thumbnails: true
-            collapse-after: 6
-          widgets:
-            - subreddit: nba
-              <<: *shared-properties
-            - subreddit: soccer
-              <<: *shared-properties
-            - subreddit: Aleague
-              <<: *shared-properties
-            - subreddit: formula1
-              <<: *shared-properties
 
     - size: small
       widgets:
