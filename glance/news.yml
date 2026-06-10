@@ -6,7 +6,7 @@
         - type: custom-api
           title: Trending Repositories
           cache: 24h
-          url: "https://api.ossinsight.io/v1/trends/repos/?period=past_week&language=All"
+          url: "https://api.ossinsight.io/v1/trends/repos/?period=past_year&language=All"
           template: |
             <ul class="list list-gap-10 collapsible-container" data-collapse-after="3">
               {{ range .JSON.Array "data.rows"}}
@@ -64,28 +64,37 @@
 
     - size: full
       widgets:
-        - type: rss
-          title: News
-          style: detailed-list
-          feeds:
-            - url: "https://www.rnz.co.nz/rss/national.xml"
-            - url: "https://www.rnz.co.nz/rss/politics.xml"
-            - url: "https://www.beehive.govt.nz/releases/feed"
-
         - type: group
-          define: &shared-properties
-            type: reddit
-            show-thumbnails: true
-            collapse-after: 6
           widgets:
-            - subreddit: worldnews
-              <<: *shared-properties
-            - subreddit: chch
-              <<: *shared-properties
-            - subreddit: newzealand
-              <<: *shared-properties
-            - subreddit: technology
-              <<: *shared-properties
+            - type: rss
+              title: World News
+              style: detailed-list
+              feeds:
+                - url: "https://feeds.bbci.co.uk/news/world/rss.xml"
+                - url: "https://www.theguardian.com/world/rss"
+        
+            - type: rss
+              title: New Zealand
+              style: detailed-list
+              feeds:
+                - url: "https://www.newsroom.co.nz/feed"
+                - url: "https://www.stuff.co.nz/api/v1.0/stuff/rss?section=nz-news"
+                - url: "https://www.stuff.co.nz/api/v1.0/stuff/rss?section=politics"
+                - url: "https://www.stuff.co.nz/api/v1.0/stuff/rss?section=southland-times"
+                - url: "https://www.stuff.co.nz/api/v1.0/stuff/rss?section=nelson-mail"
+        
+            - type: rss
+              title: Christchurch
+              style: detailed-list
+              feeds:
+                - url: "https://newsline.ccc.govt.nz/news/stories"
+        
+            - type: rss
+              title: Technology
+              style: detailed-list
+              feeds:
+                - url: "https://feeds.arstechnica.com/arstechnica/index"
+                - url: "https://hnrss.org/frontpage"
 
     - size: small
       widgets:
