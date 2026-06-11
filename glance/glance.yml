@@ -233,11 +233,17 @@ pages:
                 url: https://speedtest-tracker.flynnstevens.dev
                 icon: sh:speedtest-tracker
               - title: Portfolio
-                url: https://flynnstevens.dev/favicon.ico
-                icon: si:nextdotjs
+                url: https://flynnstevens.dev
+                icon: si:astro
               - title: Firefly
                 url: https://budget.flynnstevens.dev
                 icon: sh:firefly-iii
+              - title: Immich
+                url: https://photos.flynnstevens.dev
+                icon: sh:immich
+              - title: Terminal
+                url: https://terminal.flynnstevens.dev
+                icon: si:windows-terminal
                 
           - type: bookmarks
             title: Quick Links
@@ -251,6 +257,9 @@ pages:
                   - title: Jellyseerr
                     url: https://jellyseerr.flynnstevens.dev
                     icon: sh:jellyseerr
+                  - title: Immich
+                    url: https://photos.flynnstevens.dev
+                    icon: sh:immich
 
               - title: Arr
                 color: 0 90 55
@@ -267,25 +276,35 @@ pages:
                   - title: qBittorrent
                     url: https://torrent.flynnstevens.dev
                     icon: sh:qbittorrent
-
-              - title: Network & System
+  
+          - type: bookmarks
+            title: Quick Links
+            groups:
+              - title: Network
                 color: 115 75 55
                 links:
                   - title: Pi-hole
                     url: http://${HOST_IP}/admin
                     icon: sh:pi-hole
-                  - title: Portainer
-                    url: https://portainer.flynnstevens.dev
-                    icon: sh:portainer
-                  - title: Synology DSM
-                    url: http://${NAS_IP}:5000
-                    icon: sh:synology
                   - title: Cloudflare
                     url: https://dash.cloudflare.com
                     icon: sh:cloudflare
                   - title: Speedtest Tracker
                     url: https://speedtest-tracker.flynnstevens.dev
                     icon: sh:speedtest-tracker
+
+              - title: System
+                color: 60 95 60
+                links:
+                  - title: Portainer
+                    url: https://portainer.flynnstevens.dev
+                    icon: sh:portainer
+                  - title: Synology DSM
+                    url: http://${NAS_IP}:5000
+                    icon: sh:synology
+                  - title: Terminal
+                    url: https://terminal.flynnstevens.dev
+                    icon: si:windows-terminal
 
               - title: Home
                 color: 190 75 55
