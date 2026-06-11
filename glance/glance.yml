@@ -243,7 +243,7 @@ pages:
                 icon: sh:immich
               - title: Terminal
                 url: https://terminal.flynnstevens.dev
-                icon: si:windows-terminal
+                icon: sh:windows-terminal
 
           - type: bookmarks
             title: Quick Links
@@ -272,7 +272,7 @@ pages:
                     icon: sh:synology
                   - title: Terminal
                     url: https://terminal.flynnstevens.dev
-                    icon: si:windows-terminal
+                    icon: sh:windows-terminal
 
               - title: Home
                 color: 190 75 55
