@@ -244,39 +244,7 @@ pages:
               - title: Terminal
                 url: https://terminal.flynnstevens.dev
                 icon: si:windows-terminal
-                
-          - type: bookmarks
-            title: Quick Links
-            groups:
-              - title: Media
-                color: 253 90 60
-                links:
-                  - title: Jellyfin
-                    url: https://jellyfin.flynnstevens.dev
-                    icon: sh:jellyfin
-                  - title: Jellyseerr
-                    url: https://jellyseerr.flynnstevens.dev
-                    icon: sh:jellyseerr
-                  - title: Immich
-                    url: https://photos.flynnstevens.dev
-                    icon: sh:immich
 
-              - title: Arr
-                color: 0 90 55
-                links:
-                  - title: Radarr
-                    url: https://radarr.flynnstevens.dev
-                    icon: sh:radarr
-                  - title: Sonarr
-                    url: https://sonarr.flynnstevens.dev
-                    icon: sh:sonarr
-                  - title: Prowlarr
-                    url: https://prowlarr.flynnstevens.dev
-                    icon: sh:prowlarr
-                  - title: qBittorrent
-                    url: https://torrent.flynnstevens.dev
-                    icon: sh:qbittorrent
-  
           - type: bookmarks
             title: Quick Links
             groups:
@@ -432,6 +400,38 @@ pages:
                   <div class="size-h6">PING</div>
               </div>
               </div>
+
+          - type: bookmarks
+            title: Quick Links
+            groups:
+              - title: Media
+                color: 253 90 60
+                links:
+                  - title: Jellyfin
+                    url: https://jellyfin.flynnstevens.dev
+                    icon: sh:jellyfin
+                  - title: Jellyseerr
+                    url: https://jellyseerr.flynnstevens.dev
+                    icon: sh:jellyseerr
+                  - title: Immich
+                    url: https://photos.flynnstevens.dev
+                    icon: sh:immich
+
+              - title: Arr
+                color: 0 90 55
+                links:
+                  - title: Radarr
+                    url: https://radarr.flynnstevens.dev
+                    icon: sh:radarr
+                  - title: Sonarr
+                    url: https://sonarr.flynnstevens.dev
+                    icon: sh:sonarr
+                  - title: Prowlarr
+                    url: https://prowlarr.flynnstevens.dev
+                    icon: sh:prowlarr
+                  - title: qBittorrent
+                    url: https://torrent.flynnstevens.dev
+                    icon: sh:qbittorrent
 
   - $include: homelab.yml
   - $include: media.yml
