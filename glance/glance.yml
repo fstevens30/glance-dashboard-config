@@ -34,7 +34,7 @@ pages:
             hour-format: 24h
 
 
-          - type: groups
+          - type: group
           - widgets:
             - type: custom-api
               title: Month
