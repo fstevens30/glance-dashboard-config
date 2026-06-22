@@ -1,4 +1,24 @@
-- name: Home
+server:
+  port: 8090
+
+theme:
+  background-color: 240 27 11
+  contrast-multiplier: 1.5
+  primary-color: 321 100 71
+  positive-color: 165 78 51
+  negative-color: 360 100 71
+
+  disable-picker: true
+
+branding:
+  logo-url: https://raw.githubusercontent.com/fstevens30/glance-dashboard-config/main/glance/logo.png
+  favicon-url: https://raw.githubusercontent.com/fstevens30/glance-dashboard-config/main/glance/logo.png
+  app-name: "Glance"
+  app-icon-url: https://raw.githubusercontent.com/fstevens30/glance-dashboard-config/main/glance/logo.png
+  app-background-color: "#151519"
+
+pages:
+  - name: Home
     slug: home
     columns:
       - size: small
@@ -262,3 +282,8 @@
                   <div class="size-h6">PING</div>
               </div>
               </div>
+
+  - $include: homelab.yml
+  - $include: media.yml
+  - $include: news.yml
+  - $include: sports.yml

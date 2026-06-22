@@ -251,22 +251,3 @@
                   <p class="size-sm">Check URL and authentication bypass settings.</p>
                 </div>
               {{ end }}
-
-        - type: monitor
-          title: Quick Health
-          sites:
-            - title: Pi-hole
-              url: http://${HOST_IP}/admin
-              icon: sh:pi-hole
-            - title: Portainer
-              url: https://portainer.flynnstevens.dev
-              icon: sh:portainer
-            - title: Synology DSM
-              url: http://${NAS_IP}:5000
-              icon: sh:synology
-            - title: Flaresolverr
-              url: http://${HOST_IP}:8191
-              icon: sh:flaresolverr
-            - title: Speedtest Tracker
-              url: http://${HOST_IP}:8765
-              icon: sh:speedtest-tracker
