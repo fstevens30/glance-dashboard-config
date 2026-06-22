@@ -35,7 +35,7 @@ pages:
 
 
           - type: group
-          - widgets:
+            widgets:
             - type: custom-api
               title: Month
               body-type: string

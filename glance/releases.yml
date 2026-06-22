@@ -1,5 +1,5 @@
 - type: group
-- widgets:
+  widgets:
   - type: custom-api
     title: Latest Movies
     frameless: true
