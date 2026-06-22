@@ -1,52 +1,4 @@
-server:
-  port: 8090
-
-theme:
-  background-color: 0 0 16
-  primary-color: 43 59 81
-  positive-color: 61 66 44
-  negative-color: 6 96 59
-
-  disable-picker: false
-  presets:
-    tucan:
-      background-color: 50 1 6
-      primary-color: 24 97 58
-      negative-color: 209 88 54
-
-    shades-of-purple:
-      background-color: 243 33 25
-      contrast-multiplier: 1.2
-      primary-color: 50 100 49
-      positive-color: 98 82 71
-      negative-color: 12 77 52
-
-    neon-pink:
-      background-color: 240 27 11
-      contrast-multiplier: 1.5
-      primary-color: 321 100 71
-      positive-color: 165 78 51
-      negative-color: 360 100 71
-
-    peachy:
-      light: true
-      background-color: 28 40 77
-      primary-color: 155 100 20
-      negative-color: 0 100 60
-      contrast-multiplier: 1.1
-      text-saturation-multiplier: 0.5
-
-branding:
-  custom-footer: |
-    <p>Powered by <a style="text-decoration: underline" href="https://github.com/glanceapp/glance">Glance</a> - <a style="text-decoration: underline" href="https://github.com/fstevens30/glance-dashboard-config">built</a> with ❤️ by <a style="text-decoration: underline" href="https://flynnstevens.dev">Flynn Stevens</a></p>
-  logo-url: https://raw.githubusercontent.com/fstevens30/glance-dashboard-config/main/glance/logo.png
-  favicon-url: https://raw.githubusercontent.com/fstevens30/glance-dashboard-config/main/glance/logo.png
-  app-name: "Glance"
-  app-icon-url: https://raw.githubusercontent.com/fstevens30/glance-dashboard-config/main/glance/logo.png
-  app-background-color: "#151519"
-
-pages:
-  - name: Home
+- name: Home
     slug: home
     columns:
       - size: small
@@ -61,130 +13,95 @@ pages:
             units: metric
             hour-format: 24h
 
-          - type: group
-            widgets:
-              - type: custom-api
-                title: Day
-                body-type: string
-                skip-json-validation: true
-                cache: 1s
-                template: |
-                  {{ $localTime := now }}
-                  {{ $secondsPerDay := 86400 }}
-                  {{ $elapsedSeconds := add (mul $localTime.Hour 3600) (mul $localTime.Minute 60) | add $localTime.Second }}
-                  {{ $dayProgress := div (mul $elapsedSeconds 100.0) $secondsPerDay }}
+          - type: custom-api
+            title: Month
+            body-type: string
+            skip-json-validation: true
+            cache: 1s
+            template: |
+              {{ $localTime := now }}
 
-                  {{ $gradient := "" }}
-                  {{ if lt $dayProgress 10.0 }}
-                    {{ $gradient = "#FF4BA2" }}
-                  {{ else if lt $dayProgress 25.0 }}
-                    {{ $gradient = "#FFE100, #FF4BA2" }}
-                  {{ else if lt $dayProgress 50.0 }}
-                    {{ $gradient = "#FFE100, #FF7600, #FF4400" }}
-                  {{ else }}
-                    {{ $gradient = "#FFE100, #FF7600, #FF4400, #FF4BA2" }}
-                  {{ end }}
+              {{ $month := $localTime.Month }}
+              {{ $dayOfMonth := $localTime.Day }}
+              {{ $year := $localTime.Year }}
 
-                  <div style="font-family: sans-serif; text-align: center;">
-                    <div style="width: 100%; height: 12px; background: #23262F; border:1px solid gray; border-radius: 10px; overflow: hidden;">
-                      <div style="
-                        height: 100%;
-                        width: {{ $dayProgress }}%;
-                        background: linear-gradient(90deg, {{ $gradient }});
-                      "></div>
-                    </div>
-                    <div class="size-h1" style="margin-top: 6px;">{{ printf "%.2f" $dayProgress }}% of the day has passed</div>
-                  </div>
+              {{ $secondsToday := add (mul $localTime.Hour 3600) (mul $localTime.Minute 60) | add $localTime.Second }}
+              {{ $fractionOfDay := div $secondsToday 86400.0 }}
 
-              - type: custom-api
-                title: Month
-                body-type: string
-                skip-json-validation: true
-                cache: 1s
-                template: |
-                  {{ $localTime := now }}
+              {{ $daysInMonth := 31 }}
+              {{ if eq $month 2 }}
+                {{ $isLeapYear := or (eq (mod $year 400) 0) (and (eq (mod $year 4) 0) (ne (mod $year 100) 0)) }}
+                {{ $daysInMonth = 28 }}
+                {{ if $isLeapYear }}{{ $daysInMonth = 29 }}{{ end }}
+              {{ else if or (eq $month 4) (eq $month 6) (eq $month 9) (eq $month 11) }}
+                {{ $daysInMonth = 30 }}
+              {{ end }}
 
-                  {{ $month := $localTime.Month }}
-                  {{ $dayOfMonth := $localTime.Day }}
-                  {{ $year := $localTime.Year }}
+              {{ $daysElapsed := add (sub $dayOfMonth 1) $fractionOfDay }}
+              {{ $monthProgress := mul (div $daysElapsed $daysInMonth) 100.0 }}
 
-                  {{ $secondsToday := add (mul $localTime.Hour 3600) (mul $localTime.Minute 60) | add $localTime.Second }}
-                  {{ $fractionOfDay := div $secondsToday 86400.0 }}
+              {{ $gradient := "" }}
+              {{ if lt $monthProgress 10.0 }}
+                {{ $gradient = "#FF4BA2" }}
+              {{ else if lt $monthProgress 25.0 }}
+                {{ $gradient = "#FFE100, #FF4BA2" }}
+              {{ else if lt $monthProgress 50.0 }}
+                {{ $gradient = "#FFE100, #FF7600, #FF4400" }}
+              {{ else }}
+                {{ $gradient = "#FFE100, #FF7600, #FF4400, #FF4BA2" }}
+              {{ end }}
 
-                  {{ $daysInMonth := 31 }}
-                  {{ if eq $month 2 }}
-                    {{ $isLeapYear := or (eq (mod $year 400) 0) (and (eq (mod $year 4) 0) (ne (mod $year 100) 0)) }}
-                    {{ $daysInMonth = 28 }}
-                    {{ if $isLeapYear }}{{ $daysInMonth = 29 }}{{ end }}
-                  {{ else if or (eq $month 4) (eq $month 6) (eq $month 9) (eq $month 11) }}
-                    {{ $daysInMonth = 30 }}
-                  {{ end }}
+              <div style="font-family: sans-serif; text-align: center;">
+                <div style="width: 100%; height: 12px; background: #23262F; border:1px solid gray; border-radius: 10px; overflow: hidden;">
+                  <div style="
+                    height: 100%;
+                    width: {{ $monthProgress }}%;
+                    background: linear-gradient(90deg, {{ $gradient }});
+                  "></div>
+                </div>
+                <div class="size-h1" style="margin-top: 6px;">{{ printf "%.2f" $monthProgress }}% of the month has passed</div>
+              </div>
 
-                  {{ $daysElapsed := add (sub $dayOfMonth 1) $fractionOfDay }}
-                  {{ $monthProgress := mul (div $daysElapsed $daysInMonth) 100.0 }}
+          - type: custom-api
+            title: Year
+            body-type: string
+            skip-json-validation: true
+            cache: 1s
+            template: |
+              {{ $localTime := now }}
 
-                  {{ $gradient := "" }}
-                  {{ if lt $monthProgress 10.0 }}
-                    {{ $gradient = "#FF4BA2" }}
-                  {{ else if lt $monthProgress 25.0 }}
-                    {{ $gradient = "#FFE100, #FF4BA2" }}
-                  {{ else if lt $monthProgress 50.0 }}
-                    {{ $gradient = "#FFE100, #FF7600, #FF4400" }}
-                  {{ else }}
-                    {{ $gradient = "#FFE100, #FF7600, #FF4400, #FF4BA2" }}
-                  {{ end }}
+              {{ $secondsToday := add (mul $localTime.Hour 3600) (mul $localTime.Minute 60) | add $localTime.Second }}
+              {{ $dayOfYear := $localTime.YearDay }}
+              {{ $secondsElapsed := add (mul (sub $dayOfYear 1) 86400) $secondsToday }}
 
-                  <div style="font-family: sans-serif; text-align: center;">
-                    <div style="width: 100%; height: 12px; background: #23262F; border:1px solid gray; border-radius: 10px; overflow: hidden;">
-                      <div style="
-                        height: 100%;
-                        width: {{ $monthProgress }}%;
-                        background: linear-gradient(90deg, {{ $gradient }});
-                      "></div>
-                    </div>
-                    <div class="size-h1" style="margin-top: 6px;">{{ printf "%.2f" $monthProgress }}% of the month has passed</div>
-                  </div>
+              {{ $year := $localTime.Year }}
+              {{ $isLeapYear := or (eq (mod $year 400) 0) (and (eq (mod $year 4) 0) (ne (mod $year 100) 0)) }}
+              {{ $totalDaysInYear := 365 }}
+              {{ if $isLeapYear }}{{ $totalDaysInYear = 366 }}{{ end }}
+              {{ $totalSecondsInYear := mul $totalDaysInYear 86400 }}
+              {{ $yearProgress := div (mul $secondsElapsed 100.0) $totalSecondsInYear }}
 
-              - type: custom-api
-                title: Year
-                body-type: string
-                skip-json-validation: true
-                cache: 1s
-                template: |
-                  {{ $localTime := now }}
+              {{ $gradient := "" }}
+              {{ if lt $yearProgress 10.0 }}
+                {{ $gradient = "#FF4BA2" }}
+              {{ else if lt $yearProgress 25.0 }}
+                {{ $gradient = "#FFE100, #FF4BA2" }}
+              {{ else if lt $yearProgress 50.0 }}
+                {{ $gradient = "#FFE100, #FF7600, #FF4400" }}
+              {{ else }}
+                {{ $gradient = "#FFE100, #FF7600, #FF4400, #FF4BA2" }}
+              {{ end }}
 
-                  {{ $secondsToday := add (mul $localTime.Hour 3600) (mul $localTime.Minute 60) | add $localTime.Second }}
-                  {{ $dayOfYear := $localTime.YearDay }}
-                  {{ $secondsElapsed := add (mul (sub $dayOfYear 1) 86400) $secondsToday }}
-
-                  {{ $year := $localTime.Year }}
-                  {{ $isLeapYear := or (eq (mod $year 400) 0) (and (eq (mod $year 4) 0) (ne (mod $year 100) 0)) }}
-                  {{ $totalDaysInYear := 365 }}
-                  {{ if $isLeapYear }}{{ $totalDaysInYear = 366 }}{{ end }}
-                  {{ $totalSecondsInYear := mul $totalDaysInYear 86400 }}
-                  {{ $yearProgress := div (mul $secondsElapsed 100.0) $totalSecondsInYear }}
-
-                  {{ $gradient := "" }}
-                  {{ if lt $yearProgress 10.0 }}
-                    {{ $gradient = "#FF4BA2" }}
-                  {{ else if lt $yearProgress 25.0 }}
-                    {{ $gradient = "#FFE100, #FF4BA2" }}
-                  {{ else if lt $yearProgress 50.0 }}
-                    {{ $gradient = "#FFE100, #FF7600, #FF4400" }}
-                  {{ else }}
-                    {{ $gradient = "#FFE100, #FF7600, #FF4400, #FF4BA2" }}
-                  {{ end }}
-
-                  <div style="font-family: sans-serif; text-align: center;">
-                    <div style="width: 100%; height: 12px; background: #23262F; border:1px solid gray; border-radius: 10px; overflow: hidden;">
-                      <div style="
-                        height: 100%;
-                        width: {{ $yearProgress }}%;
-                        background: linear-gradient(90deg, {{ $gradient }});
-                      "></div>
-                    </div>
-                    <div class="size-h1" style="margin-top: 6px;">{{ printf "%.2f" $yearProgress }}% of the year has passed</div>
-                  </div>
+              <div style="font-family: sans-serif; text-align: center;">
+                <div style="width: 100%; height: 12px; background: #23262F; border:1px solid gray; border-radius: 10px; overflow: hidden;">
+                  <div style="
+                    height: 100%;
+                    width: {{ $yearProgress }}%;
+                    background: linear-gradient(90deg, {{ $gradient }});
+                  "></div>
+                </div>
+                <div class="size-h1" style="margin-top: 6px;">{{ printf "%.2f" $yearProgress }}% of the year has passed</div>
+              </div>
 
           - type: calendar
 
@@ -232,70 +149,15 @@ pages:
               - title: Speedtest Tracker
                 url: https://speedtest-tracker.flynnstevens.dev
                 icon: sh:speedtest-tracker
-              - title: Portfolio
-                url: https://flynnstevens.dev
-                icon: si:astro
               - title: Firefly
                 url: https://budget.flynnstevens.dev
                 icon: sh:firefly-iii
               - title: Immich
                 url: https://photos.flynnstevens.dev
                 icon: sh:immich
-              - title: Terminal
-                url: https://terminal.flynnstevens.dev
-                icon: sh:windows-terminal
-
-          - type: bookmarks
-            title: Quick Links
-            groups:
-              - title: Network
-                color: 115 75 55
-                links:
-                  - title: Pi-hole
-                    url: http://${HOST_IP}/admin
-                    icon: sh:pi-hole
-                  - title: Cloudflare
-                    url: https://dash.cloudflare.com
-                    icon: sh:cloudflare
-                  - title: Speedtest Tracker
-                    url: https://speedtest-tracker.flynnstevens.dev
-                    icon: sh:speedtest-tracker
-
-              - title: System
-                color: 60 95 60
-                links:
-                  - title: Portainer
-                    url: https://portainer.flynnstevens.dev
-                    icon: sh:portainer
-                  - title: Synology DSM
-                    url: http://${NAS_IP}:5000
-                    icon: sh:synology
-                  - title: Terminal
-                    url: https://terminal.flynnstevens.dev
-                    icon: sh:windows-terminal
-
-              - title: Home
-                color: 190 75 55
-                links:
-                  - title: Home Assistant
-                    url: https://home.flynnstevens.dev
-                    icon: sh:home-assistant
-                  - title: Scrypted
-                    url: https://scrypted.flynnstevens.dev
-                    icon: mdi:cctv
-                  - title: Firefly
-                    url: https://budget.flynnstevens.dev
-                    icon: sh:firefly-iii
 
       - size: small
         widgets:
-          - type: custom-api
-            title: Random Fact
-            cache: 3h
-            url: https://uselessfacts.jsph.pl/api/v2/facts/today
-            template: |
-              <p class="size-h4 color-paragraph">{{ .JSON.String "text" }}</p>
-
           - type: custom-api
             cache: 1h
             title: Internet Speed
@@ -400,40 +262,3 @@ pages:
                   <div class="size-h6">PING</div>
               </div>
               </div>
-
-          - type: bookmarks
-            title: Quick Links
-            groups:
-              - title: Media
-                color: 253 90 60
-                links:
-                  - title: Jellyfin
-                    url: https://jellyfin.flynnstevens.dev
-                    icon: sh:jellyfin
-                  - title: Jellyseerr
-                    url: https://jellyseerr.flynnstevens.dev
-                    icon: sh:jellyseerr
-                  - title: Immich
-                    url: https://photos.flynnstevens.dev
-                    icon: sh:immich
-
-              - title: Arr
-                color: 0 90 55
-                links:
-                  - title: Radarr
-                    url: https://radarr.flynnstevens.dev
-                    icon: sh:radarr
-                  - title: Sonarr
-                    url: https://sonarr.flynnstevens.dev
-                    icon: sh:sonarr
-                  - title: Prowlarr
-                    url: https://prowlarr.flynnstevens.dev
-                    icon: sh:prowlarr
-                  - title: qBittorrent
-                    url: https://torrent.flynnstevens.dev
-                    icon: sh:qbittorrent
-
-  - $include: homelab.yml
-  - $include: media.yml
-  - $include: news.yml
-  - $include: sports.yml
