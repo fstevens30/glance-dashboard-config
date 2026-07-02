@@ -29,10 +29,10 @@
               color: 270 60 60
               links:
                 - title: Home Assistant
-                  url: https://homeassistant.flynnstevens.dev
+                  url: https://home.flynnstevens.dev
                   icon: sh:home-assistant
                 - title: Scrypted
-                  url: https://scrypted.flynnstevens.dev
+                  url: http://${HOST_IP}:10443
                   icon: mdi:cctv
 
             - title: NAS
