@@ -164,8 +164,8 @@ pages:
                 url: https://home.flynnstevens.dev
                 icon: sh:home-assistant
               - title: Scrypted
-                url: http://${HOST_IP}:10443
-                icon: mdi:cctv
+                url: https://${HOST_IP}:10443
+                icon: sh:scrypted
               - title: Synology DSM
                 url: http://${NAS_IP}:5000
                 icon: sh:synology
