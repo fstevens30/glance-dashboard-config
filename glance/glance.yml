@@ -139,6 +139,9 @@ pages:
               - title: Jellyseerr
                 url: https://jellyseerr.flynnstevens.dev
                 icon: sh:jellyseerr
+              - title: Jellystat
+                url: https://jellystat.flynnstevens.dev
+                icon: sh:jellystat
               - title: Radarr
                 url: http://${HOST_IP}:7878
                 icon: sh:radarr
@@ -163,18 +166,9 @@ pages:
               - title: Home Assistant
                 url: https://home.flynnstevens.dev
                 icon: sh:home-assistant
-              - title: Scrypted
-                url: https://${HOST_IP}:10443
-                icon: sh:scrypted
-              - title: Synology DSM
-                url: http://${NAS_IP}:5000
-                icon: sh:synology
-              - title: Speedtest Tracker
-                url: http://${HOST_IP}:8765
-                icon: sh:speedtest-tracker
-              - title: Firefly
+              - title: Actual Budget
                 url: https://budget.flynnstevens.dev
-                icon: sh:firefly-iii
+                icon: sh:actual-budget
 
       - size: small
         widgets:
