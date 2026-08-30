@@ -21,6 +21,8 @@ services:
       - NASA_API_KEY=${NASA_API_KEY}
       - JELLYFIN_URL=${JELLYFIN_URL}
       - JELLYFIN_KEY=${JELLYFIN_KEY}
+      - SEERR_URL=${SEERR_URL}
+      - SEERR_API_KEY=${SEERR_API_KEY}
     volumes:
       - /opt/docker/glance-dashboard-config/glance:/app/config
       - /var/run/docker.sock:/var/run/docker.sock:ro
