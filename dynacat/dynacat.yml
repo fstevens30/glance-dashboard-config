@@ -31,17 +31,17 @@ pages:
               - title: Productivity
                 color: 210 70 55
                 links:
-                  - title: Gmail
-                    url: https://mail.google.com/mail/u/0/#inbox
+                  - title: Mail
+                    url: ${MAIL_URL}
                     icon: mdi:email
-                  - title: iCloud
-                    url: https://www.icloud.com/
+                  - title: Cloud
+                    url: ${CLOUD_URL}
                     icon: mdi:cloud
                   - title: Budget
-                    url: https://budget.flynnstevens.dev
+                    url: ${BUDGET_URL}
                     icon: mdi:currency-usd
-                  - title: ASB
-                    url: https://online.asb.co.nz
+                  - title: Banking
+                    url: ${BANKING_URL}
                     icon: mdi:bank
                   - title: ChatGPT
                     url: https://chat.openai.com/
@@ -50,7 +50,7 @@ pages:
                     url: https://github.com/
                     icon: mdi:xml
                   - title: Home
-                    url: https://home.flynnstevens.dev/
+                    url: ${HOME_URL}
                     icon: mdi:home
 
               - title: Personal
@@ -76,22 +76,22 @@ pages:
                 color: 25 75 55
                 links:
                   - title: Jellyfin
-                    url: https://jellyfin.flynnstevens.dev/
+                    url: ${JELLYFIN_URL}
                     icon: mdi:television
                   - title: Movies
-                    url: https://radarr.flynnstevens.dev/
+                    url: ${RADARR_URL}
                     icon: mdi:movie-open
                   - title: Shows
-                    url: https://sonarr.flynnstevens.dev/
+                    url: ${SONARR_URL}
                     icon: mdi:television-classic
                   - title: Torrents
-                    url: https://torrent.flynnstevens.dev/
+                    url: ${TORRENT_URL}
                     icon: mdi:magnet
                   - title: Requests
-                    url: https://jellyseerr.flynnstevens.dev/
+                    url: ${SEERR_URL}
                     icon: mdi:frequently-asked-questions
                   - title: Stats
-                    url: https://jellystat.flynnstevens.dev/
+                    url: ${JELLYSTAT_URL}
                     icon: mdi:chart-box
 
       # Main content.
@@ -162,8 +162,8 @@ pages:
               - type: custom-api
                 title: Trending Media
                 hide-header: true
-                title-url: https://jellyseerr.flynnstevens.dev/discover/trending # trending, movies, or tv
-                url: https://jellyseerr.flynnstevens.dev/api/v1/discover/trending # trending, movies, or tv
+                title-url: ${SEERR_URL}/discover/trending # trending, movies, or tv
+                url: ${SEERR_URL}/api/v1/discover/trending # trending, movies, or tv
                 cache: 15m
                 headers:
                   accept: "application/json"
@@ -188,7 +188,7 @@ pages:
                           {{ $mediaTitle := "" }}
                           {{ $mediaTypeUpper := "" }}
                           {{ if eq $mediaType "movie" }} {{ $mediaTitle = .String "title" }} {{ $mediaTypeUpper = "Movie" }}{{ else }}{{ $mediaTitle = .String "name" }} {{ $mediaTypeUpper = "TV" }}{{ end }}
-                          {{ $overseerrUrl := concat "https://jellyseerr.flynnstevens.dev" "/" $mediaType "/" ( .String "id" ) }}
+                          {{ $overseerrUrl := concat " ${SEERR_URL}" "/" $mediaType "/" ( .String "id" ) }}
                           {{ $tmdbUrl := concat "https://www.themoviedb.org" "/" $mediaType "/" ( .String "id" ) }}
                           <a href={{ $overseerrUrl }} target="_blank">
                           <img src={{ concat "https://image.tmdb.org/t/p/w300" (.String "posterPath") }} style="border-radius: 5px; min-width: 5rem; max-width: 5rem;" class="card">
@@ -275,14 +275,13 @@ pages:
             cache: 1h
             title: Internet Speed
             hide-header: true
-            title-url: http://${HOST_IP}:8765
-            url: http://${HOST_IP}:8765/api/v1/results/latest
+            url: ${SPEEDTEST_URL}/api/v1/results/latest
             headers:
               Authorization: Bearer ${SPEEDTEST_TRACKER_API_TOKEN}
               Accept: application/json
             subrequests:
               stats:
-                url: http://${HOST_IP}:8765/api/v1/stats
+                url: ${SPEEDTEST_URL}/api/v1/stats
                 headers:
                   Authorization: Bearer ${SPEEDTEST_TRACKER_API_TOKEN}
                   Accept: application/json
@@ -385,11 +384,14 @@ pages:
                 color: 210 70 55
                 links:
                   - title: Router
-                    url: http://192.168.0.1
+                    url: ${ROUTER_URL}
                     icon: mdi:router-wireless
                   - title: Domains
-                    url: https://dash.cloudflare.com/
+                    url: ${DOMAINS_URL}
                     icon: mdi:web
                   - title: DNS
-                    url: https://${HOST_IP}/admin
+                    url: ${DNS_URL}
                     icon: mdi:dns
+                  - title: Monitor
+                    url: ${MONITOR_URL}
+                    icon: mdi:clipboard-pulse

@@ -10,6 +10,22 @@ services:
       - WEATHER_LOCATION=${WEATHER_LOCATION}
       - SPEEDTEST_TRACKER_API_TOKEN=${SPEEDTEST_TRACKER_API_TOKEN}
       - SEERR_API_KEY=${SEERR_API_KEY}
+      - MAIL_URL=${MAIL_URL}
+      - CLOUD_URL=${CLOUD_URL}
+      - BUDGET_URL=${BUDGET_URL}
+      - BANKING_URL=${BANKING_URL}
+      - HOME_URL=${HOME_URL}
+      - JELLYFIN_URL=${JELLYFIN_URL}
+      - RADARR_URL=${RADARR_URL}
+      - SONARR_URL=${SONARR_URL}
+      - TORRENT_URL=${TORRENT_URL}
+      - SEERR_URL=${SEERR_URL}
+      - JELLYSTAT_URL=${JELLYSTAT_URL}
+      - SPEEDTEST_URL=${SPEEDTEST_URL}
+      - ROUTER_URL=${ROUTER_URL}
+      - DOMAINS_URL=${DOMAINS_URL}
+      - DNS_URL=${DNS_URL}
+      - MONITOR_URL=${MONITOR_URL}
     volumes:
       - /opt/docker/glance-dashboard-config/dynacat:/app/config
       - /var/run/docker.sock:/var/run/docker.sock:ro
