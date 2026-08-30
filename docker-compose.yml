@@ -30,3 +30,4 @@ services:
       - /opt/docker/glance-dashboard-config/dynacat:/app/config
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /etc/localtime:/etc/localtime:ro
+      - /opt/docker/glance-dashboard-config/assets:/app/assets:ro

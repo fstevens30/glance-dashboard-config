@@ -1,0 +1,84 @@
+:root {
+  --dashboard-accent: #d9a441;
+  --dashboard-accent-text: #1a1a1a;
+}
+
+/* ───────── NETWORK SIDEBAR ───────── */
+
+/* Internet Speed: top half */
+.sidebar-speed {
+  margin-bottom: 0 !important;
+  border-radius: 12px 12px 0 0 !important;
+}
+
+.sidebar-speed .widget-content {
+  margin-top: -1px !important;
+  padding-bottom: 4px !important;
+  border-bottom: none !important;
+  border-radius: 12px 12px 0 0 !important;
+  box-shadow: none !important;
+}
+
+/* Homelab bookmarks: bottom half */
+.sidebar-network {
+  margin-top: -1px !important;
+  border-radius: 0 !important;
+}
+
+.sidebar-network .widget-content {
+  margin-top: -1px !important;
+  padding-top: 4px !important;
+  border-top: none !important;
+  border-radius: 0 0 12px 12px !important;
+  box-shadow: none !important;
+}
+
+/* ───────── CALENDAR ───────── */
+
+.home-calendar .calendar-current-date {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem !important;
+  height: 2.5rem !important;
+  margin: auto;
+  padding: 0 !important;
+  color: var(--dashboard-accent-text) !important;
+  background-color: var(--dashboard-accent) !important;
+  border-radius: 50% !important;
+}
+
+.home-calendar .calendar {
+  margin-right: -4rem;
+  margin-left: -4rem;
+}
+
+/* Prevent calendar overflow after Dynacat switches to mobile layout */
+@media (max-width: 1190px) {
+  .home-calendar .calendar {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+/* ───────── NEWS TABS ───────── */
+
+.news-tabs .widget-group-title-current {
+  color: var(--dashboard-accent) !important;
+}
+
+/* ───────── TRENDING MEDIA ───────── */
+
+.trending-media .color-positive {
+  color: var(--dashboard-accent) !important;
+}
+
+/* Replace the default expansion-button label */
+.trending-media .expand-toggle-button {
+  font-size: 0 !important;
+}
+
+.trending-media .expand-toggle-button::before {
+  content: "More Trending Media" !important;
+  font-size: var(--font-size-h4) !important;
+}

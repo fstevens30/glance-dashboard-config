@@ -1,11 +1,14 @@
 server:
   port: 8090
+  assets-path: /app/assets
 
 theme:
-  background-color: 0 0 16
-  primary-color: 43 59 81
-  positive-color: 61 66 44
-  negative-color: 6 96 59
+  custom-css-file: /assets/custom.css
+  background-color: 240 8 9
+  primary-color: 0 0 100
+  positive-color: 100 75 62
+  negative-color: 355 72 60
+  contrast-multiplier: .9
   disable-picker: true
 
 branding:
@@ -13,7 +16,7 @@ branding:
   favicon-url: https://raw.githubusercontent.com/fstevens30/glance-dashboard-config/main/dynacat/logo.png
   app-name: "Glance"
   app-icon-url: https://raw.githubusercontent.com/fstevens30/glance-dashboard-config/main/dynacat/logo.png
-  app-background-color: "#292929"
+  app-background-color: "#151519"
   hide-footer: true
 
 pages:
@@ -104,6 +107,7 @@ pages:
 
           - type: group
             title: News
+            css-class: news-tabs
             hide-header: true
             widgets:
               - type: rss
@@ -157,10 +161,12 @@ pages:
             widgets:
               - type: calendar
                 title: Calendar
+                css-class: home-calendar
                 hide-header: true
 
               - type: custom-api
                 title: Trending Media
+                css-class: trending-media
                 hide-header: true
                 title-url: ${SEERR_URL}/discover/trending # trending, movies, or tv
                 url: ${SEERR_URL}/api/v1/discover/trending # trending, movies, or tv
@@ -274,6 +280,7 @@ pages:
           - type: custom-api
             cache: 1h
             title: Internet Speed
+            css-class: sidebar-speed
             hide-header: true
             url: ${SPEEDTEST_URL}/api/v1/results/latest
             headers:
@@ -378,6 +385,7 @@ pages:
 
           - type: bookmarks
             title: Homelab
+            css-class: sidebar-network
             hide-header: true
             groups:
               - title: Homelab
