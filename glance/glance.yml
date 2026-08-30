@@ -80,7 +80,7 @@ pages:
                     icon: mdi:movie-open
                   - title: Shows
                     url: https://sonarr.flynnstevens.dev/
-                    icon: mdi-television-classic
+                    icon: mdi:television-classic
                   - title: Torrents
                     url: https://torrent.flynnstevens.dev/
                     icon: mdi:magnet
