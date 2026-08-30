@@ -9,10 +9,10 @@ theme:
   disable-picker: true
 
 branding:
-  logo-url: https://raw.githubusercontent.com/fstevens30/glance-dashboard-config/main/glance/logo.png
-  favicon-url: https://raw.githubusercontent.com/fstevens30/glance-dashboard-config/main/glance/logo.png
+  logo-url: https://raw.githubusercontent.com/fstevens30/glance-dashboard-config/main/dynacat/logo.png
+  favicon-url: https://raw.githubusercontent.com/fstevens30/glance-dashboard-config/main/dynacat/logo.png
   app-name: "Glance"
-  app-icon-url: https://raw.githubusercontent.com/fstevens30/glance-dashboard-config/main/glance/logo.png
+  app-icon-url: https://raw.githubusercontent.com/fstevens30/glance-dashboard-config/main/dynacat/logo.png
   app-background-color: "#292929"
   hide-footer: true
 
