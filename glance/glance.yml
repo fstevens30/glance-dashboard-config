@@ -30,7 +30,8 @@ pages:
             hide-header: true
             groups:
               - title: Productivity
-                bookmarks:
+                color: 210 70 55
+                links:
                   - title: Gmail
                     url: https://mail.google.com/mail/u/0/#inbox
                     icon: sh:gmail
@@ -51,7 +52,8 @@ pages:
                     icon: sh:github
 
               - title: Personal
-                bookmarks:
+                color: 160 55 50
+                links:
                   - title: Youtube
                     url: https://www.youtube.com/
                     icon: sh:youtube
@@ -69,7 +71,8 @@ pages:
                     icon: sh:bluesky
 
               - title: Media
-                bookmarks:
+                color: 25 75 55
+                links:
                   - title: Jellyfin
                     url: https://jellyfin.flynnstevens.dev/
                     icon: sh:jellyfin
@@ -152,10 +155,12 @@ pages:
         widgets:
           - type: clock
             title: Christchurch
+            hide-header: true
             hour-format: 24h
 
           - type: weather
             title: Weather
+            hide-header: true
             location: ${WEATHER_LOCATION}
             units: metric
             hour-format: 24h
@@ -164,6 +169,7 @@ pages:
             widgets:
               - type: custom-api
                 title: Month
+                hide-header: true
                 body-type: string
                 skip-json-validation: true
                 cache: 1s
@@ -211,52 +217,14 @@ pages:
                     <div class="size-h1" style="margin-top: 6px;">{{ printf "%.2f" $monthProgress }}% of the month has passed</div>
                   </div>
 
-              - type: custom-api
-                title: Year
-                body-type: string
-                skip-json-validation: true
-                cache: 1s
-                template: |
-                  {{ $localTime := now }}
-
-                  {{ $secondsToday := add (mul $localTime.Hour 3600) (mul $localTime.Minute 60) | add $localTime.Second }}
-                  {{ $dayOfYear := $localTime.YearDay }}
-                  {{ $secondsElapsed := add (mul (sub $dayOfYear 1) 86400) $secondsToday }}
-
-                  {{ $year := $localTime.Year }}
-                  {{ $isLeapYear := or (eq (mod $year 400) 0) (and (eq (mod $year 4) 0) (ne (mod $year 100) 0)) }}
-                  {{ $totalDaysInYear := 365 }}
-                  {{ if $isLeapYear }}{{ $totalDaysInYear = 366 }}{{ end }}
-                  {{ $totalSecondsInYear := mul $totalDaysInYear 86400 }}
-                  {{ $yearProgress := div (mul $secondsElapsed 100.0) $totalSecondsInYear }}
-
-                  {{ $gradient := "" }}
-                  {{ if lt $yearProgress 10.0 }}
-                    {{ $gradient = "#FF4BA2" }}
-                  {{ else if lt $yearProgress 25.0 }}
-                    {{ $gradient = "#FFE100, #FF4BA2" }}
-                  {{ else if lt $yearProgress 50.0 }}
-                    {{ $gradient = "#FFE100, #FF7600, #FF4400" }}
-                  {{ else }}
-                    {{ $gradient = "#FFE100, #FF7600, #FF4400, #FF4BA2" }}
-                  {{ end }}
-
-                  <div style="font-family: sans-serif; text-align: center;">
-                    <div style="width: 100%; height: 12px; background: #23262F; border:1px solid gray; border-radius: 10px; overflow: hidden;">
-                      <div style="
-                        height: 100%;
-                        width: {{ $yearProgress }}%;
-                        background: linear-gradient(90deg, {{ $gradient }});
-                      "></div>
-                    </div>
-                    <div class="size-h1" style="margin-top: 6px;">{{ printf "%.2f" $yearProgress }}% of the year has passed</div>
-                  </div>
-
           - type: calendar
+            title: Calendar
+            hide-header: true
 
           - type: custom-api
             cache: 1h
             title: Internet Speed
+            hide-header: true
             title-url: http://${HOST_IP}:8765
             url: http://${HOST_IP}:8765/api/v1/results/latest
             headers:
