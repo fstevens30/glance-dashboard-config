@@ -162,8 +162,8 @@ pages:
               - type: custom-api
                 title: Trending Media
                 hide-header: true
-                title-url: ${SEERR_URL}/discover/trending    # trending, movies, or tv
-                url: ${SEERR_URL}/api/v1/discover/trending   # trending, movies, or tv
+                title-url: https://jellyseerr.flynnstevens.dev/discover/trending # trending, movies, or tv
+                url: https://jellyseerr.flynnstevens.dev/api/v1/discover/trending # trending, movies, or tv
                 cache: 15m
                 headers:
                   accept: "application/json"
@@ -188,7 +188,7 @@ pages:
                           {{ $mediaTitle := "" }}
                           {{ $mediaTypeUpper := "" }}
                           {{ if eq $mediaType "movie" }} {{ $mediaTitle = .String "title" }} {{ $mediaTypeUpper = "Movie" }}{{ else }}{{ $mediaTitle = .String "name" }} {{ $mediaTypeUpper = "TV" }}{{ end }}
-                          {{ $overseerrUrl := concat "${SEERR_URL}" "/" $mediaType "/" ( .String "id" ) }}
+                          {{ $overseerrUrl := concat "https://jellyseerr.flynnstevens.dev" "/" $mediaType "/" ( .String "id" ) }}
                           {{ $tmdbUrl := concat "https://www.themoviedb.org" "/" $mediaType "/" ( .String "id" ) }}
                           <a href={{ $overseerrUrl }} target="_blank">
                           <img src={{ concat "https://image.tmdb.org/t/p/w300" (.String "posterPath") }} style="border-radius: 5px; min-width: 5rem; max-width: 5rem;" class="card">
@@ -210,8 +210,6 @@ pages:
                       </details>
                     {{ end }}
                   {{ end }}
-              
-
 
       - size: small
         widgets:
@@ -395,6 +393,3 @@ pages:
                   - title: DNS
                     url: https://${HOST_IP}/admin
                     icon: mdi:dns
-
-                  
-
