@@ -49,6 +49,9 @@ pages:
                   - title: GitHub
                     url: https://github.com/
                     icon: mdi:xml
+                  - title: Home
+                    url: https://home.flynnstevens.dev/
+                    icon: mdi:home
 
               - title: Personal
                 color: 160 55 50
@@ -212,17 +215,13 @@ pages:
 
       - size: small
         widgets:
-          - type: clock
-            title: Christchurch
-            hide-header: true
-            hour-format: 24h
-
           - type: weather
             title: Weather
             hide-header: true
             location: ${WEATHER_LOCATION}
             units: metric
             hour-format: 24h
+            hide-location: true
 
           - type: custom-api
             title: Month
@@ -379,3 +378,23 @@ pages:
                   <div class="size-h6">PING</div>
               </div>
               </div>
+
+          - type: bookmarks
+            title: Homelab
+            hide-header: true
+            groups:
+              - title: Homelab
+                color: 210 70 55
+                links:
+                  - title: Router
+                    url: http://192.168.0.1
+                    icon: mdi:router-wireless
+                  - title: Domains
+                    url: https://dash.cloudflare.com/
+                    icon: mdi:web
+                  - title: DNS
+                    url: https://${HOST_IP}/admin
+                    icon: mdi:dns
+
+                  
+
