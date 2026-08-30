@@ -105,7 +105,6 @@ pages:
             widgets:
               - type: rss
                 title: World News
-                style: detailed-list
                 feeds:
                   - url: https://www.rnz.co.nz/rss/world.xml
                     title: RNZ World Headlines
@@ -113,7 +112,6 @@ pages:
                     title: BBC World News
               - type: rss
                 title: Local News
-                style: detailed-list
                 feeds:
                   - url: https://news.google.com/rss/search?q=Christchurch+Canterbury+New+Zealand&hl=en-NZ&gl=NZ&ceid=NZ%3Aen
                     title: Google News Christchurch
@@ -124,7 +122,6 @@ pages:
 
               - type: rss
                 title: Technology
-                style: detailed-list
                 feeds:
                   - url: https://news.ycombinator.com/rss
                     title: Hacker News
@@ -137,7 +134,6 @@ pages:
 
               - type: rss
                 title: Local Sports
-                style: detailed-list
                 feeds:
                   - url: https://www.rnz.co.nz/rss/sport.xml
                     title: RNZ Sport
@@ -146,7 +142,6 @@ pages:
 
               - type: rss
                 title: Football
-                style: detailed-list
                 feeds:
                   - url: https://feeds.bbci.co.uk/sport/football/rss.xml
                     title: BBC Football
