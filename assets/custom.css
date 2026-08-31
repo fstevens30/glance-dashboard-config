@@ -61,10 +61,26 @@
   }
 }
 
+/* ───────── SEARCH ───────── */
+
+.dashboard-search > .widget-content {
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
 /* ───────── NEWS TABS ───────── */
 
 .news-tabs .widget-group-title-current {
   color: var(--dashboard-accent) !important;
+}
+
+.news-tabs > .widget-content {
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
 }
 
 /* ───────── TRENDING MEDIA ───────── */

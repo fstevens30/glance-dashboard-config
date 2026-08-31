@@ -102,6 +102,7 @@ pages:
         widgets:
           - type: search
             title: Search
+            css-class: dashboard-search
             search-engine: google
             hide-header: true
 
