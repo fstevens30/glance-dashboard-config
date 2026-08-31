@@ -118,6 +118,7 @@ pages:
                     title: RNZ World Headlines
                   - url: https://feeds.bbci.co.uk/news/world/rss.xml
                     title: BBC World News
+
               - type: rss
                 title: Local News
                 feeds:
@@ -131,14 +132,16 @@ pages:
               - type: rss
                 title: Technology
                 feeds:
-                  - url: https://news.ycombinator.com/rss
-                    title: Hacker News
                   - url: https://feeds.arstechnica.com/arstechnica/index
                     title: Ars Technica
                   - url: https://www.theverge.com/rss/index.xml
                     title: The Verge
-                  - url: https://lobste.rs/rss
-                    title: Lobsters
+                  - url: https://www.apple.com/newsroom/rss-feed.rss
+                    title: Apple Newsroom
+                  - url: https://www.youtube.com/feeds/videos.xml?user=LinusTechTips
+                    title: Linus Tech Tips
+                  - url: https://www.engadget.com/rss.xml
+                    title: Engadget
 
               - type: rss
                 title: Local Sports
@@ -157,6 +160,20 @@ pages:
                     title: The Guardian Football
                   - url: https://news.google.com/rss/search?q=%22New+Zealand+football%22+OR+%22All+Whites%22+OR+%22Wellington+Phoenix%22+OR+%22Auckland+FC%22&hl=en-NZ&gl=NZ&ceid=NZ%3Aen
                     title: NZ Football News
+              
+              - type: rss
+                title: Gaming
+                feeds:
+                  - url: https://www.ign.com/rss/articles/feed
+                    title: IGN
+                  - url: https://majornelson.com/feed/
+                    title: XBOX WIRE
+
+              - type: rss
+                title: Development
+                feeds:
+                  - url: https://developer.apple.com/news/rss/news.rss
+                    title: Apple Developer News
 
           - type: split-column
             widgets:
