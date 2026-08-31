@@ -105,64 +105,59 @@ pages:
             search-engine: google
             hide-header: true
 
-          - type: group
-            title: News
-            css-class: news-tabs
-            hide-header: true
-            widgets:
-              - type: rss
-                title: World News
-                feeds:
-                  - url: https://www.rnz.co.nz/rss/world.xml
-                    title: RNZ World Headlines
-                  - url: https://feeds.bbci.co.uk/news/world/rss.xml
-                    title: BBC World News
-              - type: rss
-                title: Local News
-                feeds:
-                  - url: https://news.google.com/rss/search?q=Christchurch+Canterbury+New+Zealand&hl=en-NZ&gl=NZ&ceid=NZ%3Aen
-                    title: Google News Christchurch
-                  - url: https://www.rnz.co.nz/rss/national.xml
-                    title: RNZ National News
-                  - url: https://www.rnz.co.nz/rss/ldr.xml
-                    title: RNZ Local Democracy Reporting
-
-              - type: rss
-                title: Technology
-                feeds:
-                  - url: https://news.ycombinator.com/rss
-                    title: Hacker News
-                  - url: https://feeds.arstechnica.com/arstechnica/index
-                    title: Ars Technica
-                  - url: https://www.theverge.com/rss/index.xml
-                    title: The Verge
-                  - url: https://lobste.rs/rss
-                    title: Lobsters
-
-              - type: rss
-                title: Local Sports
-                feeds:
-                  - url: https://www.rnz.co.nz/rss/sport.xml
-                    title: RNZ Sport
-                  - url: https://www.rnz.co.nz/rss/live-sport.xml
-                    title: RNZ Live Sport
-
-              - type: rss
-                title: Football
-                feeds:
-                  - url: https://feeds.bbci.co.uk/sport/football/rss.xml
-                    title: BBC Football
-                  - url: https://www.theguardian.com/football/rss
-                    title: The Guardian Football
-                  - url: https://news.google.com/rss/search?q=%22New+Zealand+football%22+OR+%22All+Whites%22+OR+%22Wellington+Phoenix%22+OR+%22Auckland+FC%22&hl=en-NZ&gl=NZ&ceid=NZ%3Aen
-                    title: NZ Football News
-
           - type: split-column
             widgets:
-              - type: calendar
-                title: Calendar
-                css-class: home-calendar
+              - type: group
+                title: News
+                css-class: news-tabs
                 hide-header: true
+                widgets:
+                  - type: rss
+                    title: World News
+                    feeds:
+                      - url: https://www.rnz.co.nz/rss/world.xml
+                        title: RNZ World Headlines
+                      - url: https://feeds.bbci.co.uk/news/world/rss.xml
+                        title: BBC World News
+                  - type: rss
+                    title: Local News
+                    feeds:
+                      - url: https://news.google.com/rss/search?q=Christchurch+Canterbury+New+Zealand&hl=en-NZ&gl=NZ&ceid=NZ%3Aen
+                        title: Google News Christchurch
+                      - url: https://www.rnz.co.nz/rss/national.xml
+                        title: RNZ National News
+                      - url: https://www.rnz.co.nz/rss/ldr.xml
+                        title: RNZ Local Democracy Reporting
+
+                  - type: rss
+                    title: Technology
+                    feeds:
+                      - url: https://news.ycombinator.com/rss
+                        title: Hacker News
+                      - url: https://feeds.arstechnica.com/arstechnica/index
+                        title: Ars Technica
+                      - url: https://www.theverge.com/rss/index.xml
+                        title: The Verge
+                      - url: https://lobste.rs/rss
+                        title: Lobsters
+
+                  - type: rss
+                    title: Local Sports
+                    feeds:
+                      - url: https://www.rnz.co.nz/rss/sport.xml
+                        title: RNZ Sport
+                      - url: https://www.rnz.co.nz/rss/live-sport.xml
+                        title: RNZ Live Sport
+
+                  - type: rss
+                    title: Football
+                    feeds:
+                      - url: https://feeds.bbci.co.uk/sport/football/rss.xml
+                        title: BBC Football
+                      - url: https://www.theguardian.com/football/rss
+                        title: The Guardian Football
+                      - url: https://news.google.com/rss/search?q=%22New+Zealand+football%22+OR+%22All+Whites%22+OR+%22Wellington+Phoenix%22+OR+%22Auckland+FC%22&hl=en-NZ&gl=NZ&ceid=NZ%3Aen
+                        title: NZ Football News
 
               - type: custom-api
                 title: Trending
@@ -216,6 +211,13 @@ pages:
                       </details>
                     {{ end }}
                   {{ end }}
+                
+          - type: split-column
+            widgets:
+              - type: calendar
+                title: Calendar
+                css-class: home-calendar
+                hide-header: true
 
       - size: small
         widgets:
@@ -228,57 +230,8 @@ pages:
             hide-location: true
 
           - type: custom-api
-            title: Month
-            hide-header: true
-            body-type: string
-            skip-json-validation: true
-            cache: 1s
-            template: |
-              {{ $localTime := now }}
-
-              {{ $month := $localTime.Month }}
-              {{ $dayOfMonth := $localTime.Day }}
-              {{ $year := $localTime.Year }}
-
-              {{ $secondsToday := add (mul $localTime.Hour 3600) (mul $localTime.Minute 60) | add $localTime.Second }}
-              {{ $fractionOfDay := div $secondsToday 86400.0 }}
-
-              {{ $daysInMonth := 31 }}
-              {{ if eq $month 2 }}
-                {{ $isLeapYear := or (eq (mod $year 400) 0) (and (eq (mod $year 4) 0) (ne (mod $year 100) 0)) }}
-                {{ $daysInMonth = 28 }}
-                {{ if $isLeapYear }}{{ $daysInMonth = 29 }}{{ end }}
-              {{ else if or (eq $month 4) (eq $month 6) (eq $month 9) (eq $month 11) }}
-                {{ $daysInMonth = 30 }}
-              {{ end }}
-
-              {{ $daysElapsed := add (sub $dayOfMonth 1) $fractionOfDay }}
-              {{ $monthProgress := mul (div $daysElapsed $daysInMonth) 100.0 }}
-
-              {{ $gradient := "" }}
-              {{ if lt $monthProgress 10.0 }}
-                {{ $gradient = "#FF4BA2" }}
-              {{ else if lt $monthProgress 25.0 }}
-                {{ $gradient = "#FFE100, #FF4BA2" }}
-              {{ else if lt $monthProgress 50.0 }}
-                {{ $gradient = "#FFE100, #FF7600, #FF4400" }}
-              {{ else }}
-                {{ $gradient = "#FFE100, #FF7600, #FF4400, #FF4BA2" }}
-              {{ end }}
-
-              <div style="font-family: sans-serif; text-align: center;">
-                <div style="width: 100%; height: 12px; background: #23262F; border:1px solid gray; border-radius: 10px; overflow: hidden;">
-                  <div style="
-                    height: 100%;
-                    width: {{ $monthProgress }}%;
-                    background: linear-gradient(90deg, {{ $gradient }});
-                  "></div>
-                </div>
-                <div class="size-h1" style="margin-top: 6px;">{{ printf "%.2f" $monthProgress }}% of the month has passed</div>
-              </div>
-
-          - type: custom-api
             title: Uptime Kuma
+            hide-header: true
             title-url: ${MONITOR_URL}/status/${UPTIME_KUMA_STATUS_SLUG}
             cache: 1m
             url: ${MONITOR_URL}/api/status-page/${UPTIME_KUMA_STATUS_SLUG}
