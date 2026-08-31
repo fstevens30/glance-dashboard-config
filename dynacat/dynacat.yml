@@ -105,59 +105,64 @@ pages:
             search-engine: google
             hide-header: true
 
+          - type: group
+            title: News
+            css-class: news-tabs
+            hide-header: true
+            widgets:
+              - type: rss
+                title: World News
+                feeds:
+                  - url: https://www.rnz.co.nz/rss/world.xml
+                    title: RNZ World Headlines
+                  - url: https://feeds.bbci.co.uk/news/world/rss.xml
+                    title: BBC World News
+              - type: rss
+                title: Local News
+                feeds:
+                  - url: https://news.google.com/rss/search?q=Christchurch+Canterbury+New+Zealand&hl=en-NZ&gl=NZ&ceid=NZ%3Aen
+                    title: Google News Christchurch
+                  - url: https://www.rnz.co.nz/rss/national.xml
+                    title: RNZ National News
+                  - url: https://www.rnz.co.nz/rss/ldr.xml
+                    title: RNZ Local Democracy Reporting
+
+              - type: rss
+                title: Technology
+                feeds:
+                  - url: https://news.ycombinator.com/rss
+                    title: Hacker News
+                  - url: https://feeds.arstechnica.com/arstechnica/index
+                    title: Ars Technica
+                  - url: https://www.theverge.com/rss/index.xml
+                    title: The Verge
+                  - url: https://lobste.rs/rss
+                    title: Lobsters
+
+              - type: rss
+                title: Local Sports
+                feeds:
+                  - url: https://www.rnz.co.nz/rss/sport.xml
+                    title: RNZ Sport
+                  - url: https://www.rnz.co.nz/rss/live-sport.xml
+                    title: RNZ Live Sport
+
+              - type: rss
+                title: Football
+                feeds:
+                  - url: https://feeds.bbci.co.uk/sport/football/rss.xml
+                    title: BBC Football
+                  - url: https://www.theguardian.com/football/rss
+                    title: The Guardian Football
+                  - url: https://news.google.com/rss/search?q=%22New+Zealand+football%22+OR+%22All+Whites%22+OR+%22Wellington+Phoenix%22+OR+%22Auckland+FC%22&hl=en-NZ&gl=NZ&ceid=NZ%3Aen
+                    title: NZ Football News
+
           - type: split-column
             widgets:
-              - type: group
-                title: News
-                css-class: news-tabs
+              - type: calendar
+                title: Calendar
+                css-class: home-calendar
                 hide-header: true
-                widgets:
-                  - type: rss
-                    title: World News
-                    feeds:
-                      - url: https://www.rnz.co.nz/rss/world.xml
-                        title: RNZ World Headlines
-                      - url: https://feeds.bbci.co.uk/news/world/rss.xml
-                        title: BBC World News
-                  - type: rss
-                    title: Local News
-                    feeds:
-                      - url: https://news.google.com/rss/search?q=Christchurch+Canterbury+New+Zealand&hl=en-NZ&gl=NZ&ceid=NZ%3Aen
-                        title: Google News Christchurch
-                      - url: https://www.rnz.co.nz/rss/national.xml
-                        title: RNZ National News
-                      - url: https://www.rnz.co.nz/rss/ldr.xml
-                        title: RNZ Local Democracy Reporting
-
-                  - type: rss
-                    title: Technology
-                    feeds:
-                      - url: https://news.ycombinator.com/rss
-                        title: Hacker News
-                      - url: https://feeds.arstechnica.com/arstechnica/index
-                        title: Ars Technica
-                      - url: https://www.theverge.com/rss/index.xml
-                        title: The Verge
-                      - url: https://lobste.rs/rss
-                        title: Lobsters
-
-                  - type: rss
-                    title: Local Sports
-                    feeds:
-                      - url: https://www.rnz.co.nz/rss/sport.xml
-                        title: RNZ Sport
-                      - url: https://www.rnz.co.nz/rss/live-sport.xml
-                        title: RNZ Live Sport
-
-                  - type: rss
-                    title: Football
-                    feeds:
-                      - url: https://feeds.bbci.co.uk/sport/football/rss.xml
-                        title: BBC Football
-                      - url: https://www.theguardian.com/football/rss
-                        title: The Guardian Football
-                      - url: https://news.google.com/rss/search?q=%22New+Zealand+football%22+OR+%22All+Whites%22+OR+%22Wellington+Phoenix%22+OR+%22Auckland+FC%22&hl=en-NZ&gl=NZ&ceid=NZ%3Aen
-                        title: NZ Football News
 
               - type: custom-api
                 title: Trending
@@ -182,7 +187,7 @@ pages:
                   {{ if eq .Response.StatusCode 200 }}
                     {{ $items := .JSON.Array "results" }}
                     {{ if gt (len $items) 0 }}
-                      <ul class="list list-gap-10 collapsible-container" data-collapse-after="5">
+                      <ul class="list list-gap-10 collapsible-container" data-collapse-after="3">
                       {{ range $items }}
                         <li class="flex items-start gap-10 thumbnail-container thumbnail-parent">
                           {{ $mediaType := .String "mediaType" }}
@@ -211,13 +216,6 @@ pages:
                       </details>
                     {{ end }}
                   {{ end }}
-                
-          - type: split-column
-            widgets:
-              - type: calendar
-                title: Calendar
-                css-class: home-calendar
-                hide-header: true
 
       - size: small
         widgets:
