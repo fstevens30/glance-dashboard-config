@@ -34,68 +34,68 @@ pages:
               - title: Productivity
                 color: 210 70 55
                 links:
-                  - title: Mail
+                  - title: Gmail
                     url: ${MAIL_URL}
-                    icon: mdi:email
-                  - title: Cloud
+                    icon: sh:gmail
+                  - title: iCloud
                     url: ${CLOUD_URL}
-                    icon: mdi:cloud
+                    icon: sh:icloud
                   - title: Budget
                     url: ${BUDGET_URL}
-                    icon: mdi:currency-usd
+                    icon: sh:actual-budget
                   - title: Banking
                     url: ${BANKING_URL}
                     icon: mdi:bank
                   - title: ChatGPT
                     url: https://chat.openai.com/
-                    icon: mdi:message
+                    icon: sh:chatgpt
                   - title: GitHub
                     url: https://github.com/
-                    icon: mdi:xml
+                    icon: sh:github-light
                   - title: Home
                     url: ${HOME_URL}
-                    icon: mdi:home
+                    icon: sh:home-assistant
 
               - title: Personal
                 color: 160 55 50
                 links:
                   - title: Youtube
                     url: https://www.youtube.com/
-                    icon: mdi:youtube
+                    icon: sh:youtube
                   - title: Facebook
                     url: https://www.facebook.com/
-                    icon: mdi:facebook
+                    icon: sh:facebook
                   - title: Twitter
                     url: https://twitter.com/home
-                    icon: mdi:twitter
+                    icon: sh:twitter
                   - title: Reddit
                     url: https://www.reddit.com/
-                    icon: mdi:reddit
+                    icon: sh:reddit
                   - title: BlueSky
                     url: https://bsky.app/
-                    icon: mdi:butterfly
+                    icon: sh:butterfly
 
               - title: Media
                 color: 25 75 55
                 links:
                   - title: Jellyfin
                     url: ${JELLYFIN_URL}
-                    icon: mdi:television
+                    icon: sh:jellyfin
                   - title: Movies
                     url: ${RADARR_URL}
-                    icon: mdi:movie-open
+                    icon: sh:radarr
                   - title: Shows
                     url: ${SONARR_URL}
-                    icon: mdi:television-classic
+                    icon: sh:sonarr
                   - title: Torrents
                     url: ${TORRENT_URL}
-                    icon: mdi:magnet
+                    icon: sh:qbittorrent
                   - title: Requests
                     url: ${SEERR_URL}
-                    icon: mdi:frequently-asked-questions
+                    icon: sh:seerr
                   - title: Stats
                     url: ${JELLYSTAT_URL}
-                    icon: mdi:chart-box
+                    icon: sh:jellystat
 
       # Main content.
       - size: full
@@ -165,7 +165,7 @@ pages:
                 hide-header: true
 
               - type: custom-api
-                title: Trending Media
+                title: Trending
                 css-class: trending-media
                 hide-header: true
                 title-url: ${SEERR_URL}/discover/trending # trending, movies, or tv
@@ -276,6 +276,235 @@ pages:
                 </div>
                 <div class="size-h1" style="margin-top: 6px;">{{ printf "%.2f" $monthProgress }}% of the month has passed</div>
               </div>
+
+          - type: custom-api
+            title: Uptime Kuma
+            title-url: ${MONITOR_URL}/status/${UPTIME_KUMA_STATUS_SLUG}
+            cache: 1m
+            url: ${MONITOR_URL}/api/status-page/${UPTIME_KUMA_STATUS_SLUG}
+            subrequests:
+              heartbeats:
+                url: ${MONITOR_URL}/api/status-page/heartbeat/${UPTIME_KUMA_STATUS_SLUG}
+            template: |
+              {{ $heartbeats := .Subrequest "heartbeats" }}
+
+              {{ if or (ne .Response.StatusCode 200) (ne $heartbeats.Response.StatusCode 200) }}
+                <p class="color-negative">Unable to load Uptime Kuma</p>
+              {{ else if eq (len (.JSON.Array "publicGroupList")) 0 }}
+                <p class="color-subdue">No public monitors found</p>
+              {{ else }}
+                <ul class="list list-gap-8">
+                  {{ range .JSON.Array "publicGroupList" }}
+                    {{ range .Array "monitorList" }}
+                      {{ $id := .String "id" }}
+                      {{ $heartbeatPath := concat "heartbeatList." $id }}
+                      {{ $uptimePath := concat "uptimeList." $id "_24" }}
+                      {{ $heartbeatList := $heartbeats.JSON.Array $heartbeatPath }}
+                      {{ $uptime := mul ($heartbeats.JSON.Float $uptimePath) 100 }}
+
+                      <li class="flex items-center gap-10">
+                        <a
+                          class="grow text-truncate color-highlight"
+                          href="${MONITOR_URL}/status/${UPTIME_KUMA_STATUS_SLUG}"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {{ .String "name" }}
+                        </a>
+
+                        <span class="color-subdue size-h6">
+                          {{ printf "%.2f%%" $uptime }}
+                        </span>
+
+                        {{ if gt (len $heartbeatList) 0 }}
+                          {{ $latest := index $heartbeatList (sub (len $heartbeatList) 1) }}
+                          {{ $status := $latest.Int "status" }}
+
+                          {{ if eq $status 1 }}
+                            <span class="color-positive size-h6">
+                              {{ $latest.Int "ping" }}ms
+                            </span>
+                            <span
+                              title="Operational"
+                              style="width:9px;height:9px;border-radius:50%;background:var(--color-positive);flex-shrink:0;"
+                            ></span>
+                          {{ else if eq $status 3 }}
+                            <span style="color:var(--dashboard-accent);" class="size-h6">
+                              Maintenance
+                            </span>
+                            <span
+                              title="Maintenance"
+                              style="width:9px;height:9px;border-radius:50%;background:var(--dashboard-accent);flex-shrink:0;"
+                            ></span>
+                          {{ else }}
+                            <span class="color-negative size-h6">Down</span>
+                            <span
+                              title="{{ $latest.String "msg" }}"
+                              style="width:9px;height:9px;border-radius:50%;background:var(--color-negative);flex-shrink:0;"
+                            ></span>
+                          {{ end }}
+                        {{ else }}
+                          <span class="color-subdue size-h6">No data</span>
+                          <span
+                            title="No heartbeat data"
+                            style="width:9px;height:9px;border-radius:50%;background:var(--color-text-subdue);flex-shrink:0;"
+                          ></span>
+                        {{ end }}
+                      </li>
+                    {{ end }}
+                  {{ end }}
+                </ul>
+              {{ end }}
+
+          - type: custom-api
+            title: Storage
+            css-class: sidebar-storage
+            hide-header: true
+            cache: 5m
+            template: |
+              {{ $baseURL := concat "${NAS_API_URL}" "/webapi/entry.cgi" }}
+
+              {{ $auth := newRequest $baseURL
+                  | withParameter "api" "SYNO.API.Auth"
+                  | withParameter "version" "6"
+                  | withParameter "method" "login"
+                  | withParameter "account" "${NAS_USERNAME}"
+                  | withParameter "passwd" "${NAS_PASSWORD}"
+                  | withParameter "session" "FileStation"
+                  | withParameter "format" "sid"
+                  | getResponse
+              }}
+
+              {{ if and (eq $auth.Response.StatusCode 200) ($auth.JSON.Bool "success") }}
+                {{ $sid := $auth.JSON.String "data.sid" }}
+
+                {{ $storage := newRequest $baseURL
+                    | withParameter "api" "SYNO.Core.System"
+                    | withParameter "version" "1"
+                    | withParameter "method" "info"
+                    | withParameter "type" "storage"
+                    | withParameter "_sid" $sid
+                    | getResponse
+                }}
+
+                {{ $volumes := $storage.JSON.Array "data.vol_info" }}
+
+                {{ if and
+                    (eq $storage.Response.StatusCode 200)
+                    ($storage.JSON.Bool "success")
+                    (gt (len $volumes) 0)
+                }}
+                  {{ $volume := index $volumes 0 }}
+                  {{ $total := $volume.Float "total_size" }}
+                  {{ $used := $volume.Float "used_size" }}
+
+                  {{ if gt $total 0.0 }}
+                    {{ $usedPercent := mul (div $used $total) 100 }}
+                    {{ $freePercent := sub 100 $usedPercent }}
+                    {{ $usedTB := div $used 1099511627776 }}
+                    {{ $totalTB := div $total 1099511627776 }}
+
+                    <div style="width:100%;">
+                      <div style="
+                        display:flex;
+                        justify-content:space-between;
+                        align-items:center;
+                        margin-bottom:8px;
+                        font-size:15px;
+                        font-weight:600;
+                      ">
+                        <div>
+                          <span style="color:var(--dashboard-accent);">USED</span>
+                          <span style="color:var(--dashboard-accent);margin-left:5px;">
+                            {{ $usedPercent | toInt }}%
+                          </span>
+                        </div>
+
+                        <div>
+                          <span>{{ $freePercent | toInt }}%</span>
+                          <span class="color-subdue" style="margin-left:5px;">LEFT</span>
+                        </div>
+                      </div>
+
+                      <div style="
+                        width:100%;
+                        height:14px;
+                        border-radius:7px;
+                        overflow:hidden;
+                        position:relative;
+                        background:rgba(255,255,255,.12);
+                      ">
+                        <div style="
+                          width:{{ $usedPercent }}%;
+                          height:100%;
+                          background:var(--dashboard-accent);
+                        "></div>
+
+                        <div style="
+                          position:absolute;
+                          left:calc({{ $usedPercent }}% - 2px);
+                          top:-2px;
+                          width:4px;
+                          height:18px;
+                          background:#fff;
+                          border-radius:4px;
+                        "></div>
+                      </div>
+
+                      <div style="
+                        display:flex;
+                        justify-content:space-between;
+                        margin-top:8px;
+                        font-size:14px;
+                        font-weight:500;
+                      ">
+                        <span class="color-subdue">
+                          {{ printf "%.2f TB" $usedTB }}
+                        </span>
+                        <span class="color-subdue">
+                          {{ printf "%.2f TB" $totalTB }}
+                        </span>
+                      </div>
+                    </div>
+                  {{ else }}
+                    <p class="color-negative">Invalid storage capacity</p>
+                  {{ end }}
+                {{ else }}
+                  <p class="color-negative">Failed to fetch storage data</p>
+                {{ end }}
+
+                {{ $logout := newRequest $baseURL
+                    | withParameter "api" "SYNO.API.Auth"
+                    | withParameter "version" "6"
+                    | withParameter "method" "logout"
+                    | withParameter "session" "FileStation"
+                    | withParameter "_sid" $sid
+                    | getResponse
+                }}
+              {{ else }}
+                <p class="color-negative">
+                  Synology authentication failed
+                  {{ if $auth.JSON.Exists "error.code" }}
+                    ({{ $auth.JSON.Int "error.code" }})
+                  {{ end }}
+                </p>
+              {{ end }}
+
+          - type: bookmarks
+            title: Server
+            hide-header: true
+            css-class: sidebar-server
+            groups:
+              - title: ""
+                color: 275 60 55
+                links:
+                  - title: NAS
+                    url: ${NAS_URL}
+                    icon: sh:synology
+
+                  - title: Portainer
+                    url: ${PORTAINER_URL}
+                    icon: sh:portainer
 
           - type: custom-api
             cache: 1h
@@ -393,13 +622,13 @@ pages:
                 links:
                   - title: Router
                     url: ${ROUTER_URL}
-                    icon: mdi:router-wireless
+                    icon: si:asus
                   - title: Domains
                     url: ${DOMAINS_URL}
-                    icon: mdi:web
+                    icon: sh:cloudflare-zero-trust
                   - title: DNS
                     url: ${DNS_URL}
-                    icon: mdi:dns
+                    icon: sh:pi-hole
                   - title: Monitor
-                    url: ${MONITOR_URL}
-                    icon: mdi:clipboard-pulse
+                    url: ${STATUS_URL}
+                    icon: sh:uptime-kuma

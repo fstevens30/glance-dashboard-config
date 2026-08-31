@@ -25,7 +25,14 @@ services:
       - ROUTER_URL=${ROUTER_URL}
       - DOMAINS_URL=${DOMAINS_URL}
       - DNS_URL=${DNS_URL}
+      - STATUS_URL=${STATUS_URL}
       - MONITOR_URL=${MONITOR_URL}
+      - UPTIME_KUMA_STATUS_SLUG=${UPTIME_KUMA_STATUS_SLUG}
+      - NAS_API_URL=${NAS_API_URL}
+      - NAS_USERNAME=${NAS_USERNAME}
+      - NAS_PASSWORD=${NAS_PASSWORD}
+      - NAS_URL=${NAS_URL}
+      - PORTAINER_URL=${PORTAINER_URL}
     volumes:
       - /opt/docker/glance-dashboard-config/dynacat:/app/config
       - /var/run/docker.sock:/var/run/docker.sock:ro

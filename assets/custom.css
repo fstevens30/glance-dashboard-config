@@ -82,3 +82,30 @@
   content: "More Trending Media" !important;
   font-size: var(--font-size-h4) !important;
 }
+
+/* ───────── SERVER SIDEBAR ───────── */
+
+.sidebar-storage {
+  margin-bottom: 0 !important;
+  border-radius: 12px 12px 0 0 !important;
+}
+
+.sidebar-storage .widget-content {
+  padding-bottom: 8px !important;
+  border-bottom: none !important;
+  border-radius: 12px 12px 0 0 !important;
+  box-shadow: none !important;
+}
+
+.sidebar-server {
+  margin-top: -1px !important;
+  border-radius: 0 0 12px 12px !important;
+}
+
+.sidebar-server .widget-content {
+  margin-top: -1px !important;
+  padding-top: 8px !important;
+  border-top: none !important;
+  border-radius: 0 0 12px 12px !important;
+  box-shadow: none !important;
+}
