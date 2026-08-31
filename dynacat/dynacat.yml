@@ -373,7 +373,7 @@ pages:
 
                         <div>
                           <span>{{ $freePercent | toInt }}%</span>
-                          <span class="color-subdue" style="margin-left:5px;">LEFT</span>
+                          <span class="color-subdue" style="margin-left:5px;">FREE</span>
                         </div>
                       </div>
 
@@ -452,10 +452,6 @@ pages:
                   - title: NAS
                     url: ${NAS_URL}
                     icon: sh:synology
-
-                  - title: Portainer
-                    url: ${PORTAINER_URL}
-                    icon: sh:portainer
 
           - type: custom-api
             cache: 1h
@@ -583,3 +579,6 @@ pages:
                   - title: Monitor
                     url: ${STATUS_URL}
                     icon: sh:uptime-kuma
+                  - title: Portainer
+                    url: ${PORTAINER_URL}
+                    icon: sh:portainer
