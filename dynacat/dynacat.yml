@@ -73,7 +73,7 @@ pages:
                     icon: sh:reddit
                   - title: BlueSky
                     url: https://bsky.app/
-                    icon: sh:butterfly
+                    icon: sh:bluesky
 
               - title: Media
                 color: 25 75 55
