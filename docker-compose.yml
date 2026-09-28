@@ -33,6 +33,7 @@ services:
       - NAS_PASSWORD=${NAS_PASSWORD}
       - NAS_URL=${NAS_URL}
       - PORTAINER_URL=${PORTAINER_URL}
+      - HEALTH_URL=${HEALTH_URL}
     volumes:
       - /opt/docker/glance-dashboard-config/dynacat:/app/config
       - /var/run/docker.sock:/var/run/docker.sock:ro
