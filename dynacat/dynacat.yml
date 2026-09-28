@@ -55,6 +55,9 @@ pages:
                   - title: Home
                     url: ${HOME_URL}
                     icon: sh:home-assistant
+                  - title: Health
+                    url: ${HEALTH_URL}
+                    icon: sh:sparkyfitness
 
               - title: Personal
                 color: 160 55 50
