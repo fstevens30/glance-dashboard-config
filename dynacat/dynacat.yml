@@ -36,69 +36,50 @@ pages:
                 links:
                   - title: Gmail
                     url: ${MAIL_URL}
-                    icon: sh:gmail
+                    icon: mdi:email-outline
                   - title: iCloud
                     url: ${CLOUD_URL}
-                    icon: sh:icloud
+                    icon: mdi:cloud-outline
                   - title: Budget
                     url: ${BUDGET_URL}
-                    icon: sh:actual-budget
+                    icon: mdi:cash-outline
                   - title: Banking
                     url: ${BANKING_URL}
                     icon: mdi:bank
                   - title: ChatGPT
                     url: https://chat.openai.com/
-                    icon: sh:chatgpt
+                    icon: mdi:robot-outline
                   - title: GitHub
                     url: https://github.com/
-                    icon: sh:github-light
+                    icon: mdi:file-code-outline
                   - title: Home
                     url: ${HOME_URL}
-                    icon: sh:home-assistant
+                    icon: mdi:home-lightning-bolt-outline
                   - title: Health
                     url: ${HEALTH_URL}
-                    icon: sh:sparkyfitness
-
-              - title: Personal
-                color: 160 55 50
-                links:
-                  - title: Youtube
-                    url: https://www.youtube.com/
-                    icon: sh:youtube
-                  - title: Facebook
-                    url: https://www.facebook.com/
-                    icon: sh:facebook
-                  - title: Twitter
-                    url: https://twitter.com/home
-                    icon: sh:twitter
-                  - title: Reddit
-                    url: https://www.reddit.com/
-                    icon: sh:reddit
-                  - title: BlueSky
-                    url: https://bsky.app/
-                    icon: sh:bluesky
+                    icon: mdi:heart-circle-outline
 
               - title: Media
-                color: 25 75 55
+                color: 149 0 255
                 links:
                   - title: Jellyfin
                     url: ${JELLYFIN_URL}
-                    icon: sh:jellyfin
+                    icon: mdi:television-play
                   - title: Movies
                     url: ${RADARR_URL}
-                    icon: sh:radarr
+                    icon: mdi:movie-open-outline
                   - title: Shows
                     url: ${SONARR_URL}
-                    icon: sh:sonarr
+                    icon: mdi:television-classic
                   - title: Torrents
                     url: ${TORRENT_URL}
-                    icon: sh:qbittorrent
+                    icon: mdi:download-box-outline
                   - title: Requests
                     url: ${SEERR_URL}
-                    icon: sh:seerr
+                    icon: mdi:eye-outline
                   - title: Stats
                     url: ${JELLYSTAT_URL}
-                    icon: sh:jellystat
+                    icon: mdi:clipboard-text-clock-outline
 
       # Main content.
       - size: full
@@ -590,16 +571,16 @@ pages:
                 links:
                   - title: Router
                     url: ${ROUTER_URL}
-                    icon: si:asus
+                    icon: mdi:router-wireless
                   - title: Domains
                     url: ${DOMAINS_URL}
-                    icon: sh:cloudflare-zero-trust
+                    icon: mdi:web
                   - title: DNS
                     url: ${DNS_URL}
-                    icon: sh:pi-hole
+                    icon: mdi:block-helper
                   - title: Monitor
                     url: ${STATUS_URL}
-                    icon: sh:uptime-kuma
-                  - title: Portainer
+                    icon: mdi:monitor-dashboard
+                  - title: Dockhand
                     url: ${PORTAINER_URL}
-                    icon: sh:portainer
+                    icon: mdi:train-car-container
