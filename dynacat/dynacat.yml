@@ -42,7 +42,7 @@ pages:
                     icon: mdi:cloud-outline
                   - title: Budget
                     url: ${BUDGET_URL}
-                    icon: mdi:cash-outline
+                    icon: mdi:cash-multiple
                   - title: Banking
                     url: ${BANKING_URL}
                     icon: mdi:bank
