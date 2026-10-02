@@ -60,7 +60,7 @@ pages:
                     icon: mdi:heart-circle-outline
 
               - title: Media
-                color: 149 0 255
+                color: 273 100 50
                 links:
                   - title: Jellyfin
                     url: ${JELLYFIN_URL}
