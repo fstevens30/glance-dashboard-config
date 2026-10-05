@@ -256,9 +256,11 @@ pages:
             servers:
               - type: local
                 name: Server
+                compact: true
               - type: remote
                 name: NAS
                 url: ${NAS_API_URL}
+                compact: true
               
           - type: custom-api
             cache: 1h
