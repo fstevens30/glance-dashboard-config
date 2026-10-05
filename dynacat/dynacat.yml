@@ -261,7 +261,7 @@ pages:
                 name: Server
               - type: remote
                 name: NAS
-                url: {NAS_API_URL}
+                url: ${NAS_API_URL}
               
           - type: custom-api
             cache: 1h
