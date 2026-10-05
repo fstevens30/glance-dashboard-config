@@ -254,7 +254,7 @@ pages:
           - type: dynawidgets
             widget: uptime-kuma
             title: Uptime Kuma
-            title-url: ${UPTIME_KUMA_URL}
+            title-url: ${MONITOR_URL}
             cache: 10m
 
           - type: custom-api
