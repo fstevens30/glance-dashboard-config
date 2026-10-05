@@ -261,6 +261,10 @@ pages:
                 name: NAS
                 url: ${NAS_API_URL}
                 compact: true
+                hide-mountpoints-by-default: true
+                mountpoints:
+                  "/":
+                    hide: false
               
           - type: custom-api
             cache: 1h
