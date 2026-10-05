@@ -26,7 +26,7 @@ services:
       - DOMAINS_URL=${DOMAINS_URL}
       - DNS_URL=${DNS_URL}
       - STATUS_URL=${STATUS_URL}
-      - MONITOR_URL=${MONITOR_URL}
+      - UPTIME_KUMA_URL=${UPTIME_KUMA_URL}
       - UPTIME_KUMA_STATUS_SLUG=${UPTIME_KUMA_STATUS_SLUG}
       - NAS_API_URL=${NAS_API_URL}
       - NAS_USERNAME=${NAS_USERNAME}
@@ -38,4 +38,4 @@ services:
       - ./dynacat:/app/config
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /etc/localtime:/etc/localtime:ro
-      - ./assets:/app/assets:ro
+      - ./assets:/app/assets
