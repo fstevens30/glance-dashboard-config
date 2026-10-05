@@ -3,7 +3,6 @@ server:
   assets-path: /app/assets
 
 theme:
-  custom-css-file: /assets/custom.css
   background-color: 240 8 9
   primary-color: 0 0 100
   positive-color: 100 75 62
@@ -14,7 +13,7 @@ theme:
 branding:
   logo-url: https://raw.githubusercontent.com/fstevens30/glance-dashboard-config/main/dynacat/logo.png
   favicon-url: https://raw.githubusercontent.com/fstevens30/glance-dashboard-config/main/dynacat/logo.png
-  app-name: "Glance"
+  app-name: "Dashboard"
   app-icon-url: https://raw.githubusercontent.com/fstevens30/glance-dashboard-config/main/dynacat/logo.png
   app-background-color: "#151519"
   hide-footer: true
@@ -42,7 +41,7 @@ pages:
                     icon: mdi:cloud-outline
                   - title: Budget
                     url: ${BUDGET_URL}
-                    icon: mdi:cash
+                    icon: mdi:cash-multiple
                   - title: Banking
                     url: ${BANKING_URL}
                     icon: mdi:bank
@@ -80,6 +79,29 @@ pages:
                   - title: Stats
                     url: ${JELLYSTAT_URL}
                     icon: mdi:clipboard-text-clock-outline
+                    
+              - title: Homelab
+                color: 210 70 55
+                links:
+                  - title: Router
+                    url: ${ROUTER_URL}
+                    icon: mdi:router-wireless
+                  - title: Domains
+                    url: ${DOMAINS_URL}
+                    icon: mdi:web
+                  - title: DNS
+                    url: ${DNS_URL}
+                    icon: mdi:block-helper
+                  - title: Monitor
+                    url: ${STATUS_URL}
+                    icon: mdi:monitor-dashboard
+                  - title: Dockhand
+                    url: ${PORTAINER_URL}
+                    icon: mdi:train-car-container
+                  - title: NAS
+                    url: ${NAS_URL}
+                    icon: mdi:nas
+                  
 
       # Main content.
       - size: full
@@ -443,18 +465,6 @@ pages:
                 </p>
               {{ end }}
 
-          - type: bookmarks
-            title: Server
-            hide-header: true
-            css-class: sidebar-server
-            groups:
-              - title: ""
-                color: 275 60 55
-                links:
-                  - title: NAS
-                    url: ${NAS_URL}
-                    icon: mdi:nas
-
           - type: custom-api
             cache: 1h
             title: Internet Speed
@@ -560,27 +570,4 @@ pages:
                   <div class="size-h6">PING</div>
               </div>
               </div>
-
-          - type: bookmarks
-            title: Homelab
-            css-class: sidebar-network
-            hide-header: true
-            groups:
-              - title: Homelab
-                color: 210 70 55
-                links:
-                  - title: Router
-                    url: ${ROUTER_URL}
-                    icon: mdi:router-wireless
-                  - title: Domains
-                    url: ${DOMAINS_URL}
-                    icon: mdi:web
-                  - title: DNS
-                    url: ${DNS_URL}
-                    icon: mdi:block-helper
-                  - title: Monitor
-                    url: ${STATUS_URL}
-                    icon: mdi:monitor-dashboard
-                  - title: Dockhand
-                    url: ${PORTAINER_URL}
-                    icon: mdi:train-car-container
+              
