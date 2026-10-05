@@ -21,7 +21,7 @@ branding:
 pages:
   - name: Home
     width: wide
-    hide-desktop-navigation: true
+    hide-desktop-navigation: false
     columns:
       # Sidebar, these are externally accessible links that I use frequently.
       - size: small
