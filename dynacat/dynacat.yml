@@ -106,12 +106,6 @@ pages:
       # Main content.
       - size: full
         widgets:
-          - type: search
-            title: Search
-            css-class: dashboard-search
-            search-engine: google
-            hide-header: true
-
           - type: group
             title: News
             css-class: news-tabs
@@ -244,18 +238,21 @@ pages:
       - size: small
         widgets:
           - type: torrenting
+            hide-header: true
             hosts:
               - url: ${TORRENT_URL_LOCAL}
                 username: ${TORRENT_USER}
                 password: ${TORRENT_PASS}
 
           - type: dynawidgets
+            hide-header: true
             widget: uptime-kuma
             title: Uptime Kuma
             title-url: ${UPTIME_KUMA_URL}
             cache: 10m
 
           - type: server-stats
+            hide-header: true
             servers:
               - type: local
                 name: Server
@@ -266,7 +263,6 @@ pages:
           - type: custom-api
             cache: 1h
             title: Internet Speed
-            css-class: sidebar-speed
             hide-header: true
             url: ${SPEEDTEST_URL}/api/v1/results/latest
             headers:
