@@ -245,9 +245,9 @@ pages:
         widgets:
           - type: torrenting
             hosts:
-              - url: {TORRENT_URL_LOCAL}
-                username: {TORRENT_USER}
-                password: {TORRENT_PASS}
+              - url: ${TORRENT_URL_LOCAL}
+                username: ${TORRENT_USER}
+                password: ${TORRENT_PASS}
 
           - type: dynawidgets
             widget: uptime-kuma
