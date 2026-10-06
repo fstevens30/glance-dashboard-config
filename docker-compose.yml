@@ -38,6 +38,7 @@ services:
       - TORRENT_USER=${TORRENT_USER}
       - TORRENT_PASS=${TORRENT_PASS}
       - JELLYFIN_API_KEY=${JELLYFIN_API_KEY}
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
     volumes:
       - ./dynacat:/app/config
       - /var/run/docker.sock:/var/run/docker.sock:ro
