@@ -179,6 +179,8 @@ pages:
             widgets:
               - type: releases
                 hide-header: true
+                show-source-icon: true
+                token: ${GITHUB_TOKEN}
                 repositories:
                   - sonarr/sonarr
                   - radarr/radarr
